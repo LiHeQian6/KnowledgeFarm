@@ -40,6 +40,10 @@ using namespace cocos2d::experimental;
 using namespace CocosDenshion;
 #endif
 
+#ifdef WIN32
+#pragma execution_character_set("utf-8")
+#endif
+
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);

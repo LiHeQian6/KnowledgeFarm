@@ -22,14 +22,13 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 #include "SimpleAudioEngine.h"
-
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* Main::createScene()
 {
-    return HelloWorld::create();
+    return Main::create();
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -40,7 +39,7 @@ static void problemLoading(const char* filename)
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool Main::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -48,78 +47,74 @@ bool HelloWorld::init()
     {
         return false;
     }
-
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
+	auto learn = MenuItemImage::create(
+		"learn.png",
+		"learn.png",
+		CC_CALLBACK_1(Main::menuCloseCallback, this));
+	learn->setScale(visibleSize.width/6/ learn->getContentSize().width);
+	float x = origin.x + visibleSize.width * 1 / 10;
+	float y = origin.y + visibleSize.height/8;
+	learn->setPosition(Vec2(x, y));
 
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+	auto shuihu = MenuItemImage::create(
+		"shuihu.png",
+		"shuihu.png",
+		CC_CALLBACK_1(Main::menuCloseCallback, this));
+	shuihu->setScale(visibleSize.width / 14 / shuihu->getContentSize().width);
+	shuihu->setAnchorPoint(Vec2(0.4, 0.5));
+	x = origin.x + visibleSize.width * 5/20;
+	y = origin.y + visibleSize.height / 12;
+	shuihu->setPosition(Vec2(x, y));
 
-    if (closeItem == nullptr ||
-        closeItem->getContentSize().width <= 0 ||
-        closeItem->getContentSize().height <= 0)
-    {
-        problemLoading("'CloseNormal.png' and 'CloseSelected.png'");
-    }
-    else
-    {
-        float x = origin.x + visibleSize.width - closeItem->getContentSize().width/2;
-        float y = origin.y + closeItem->getContentSize().height/2;
-        closeItem->setPosition(Vec2(x,y));
-    }
+    auto huafei = MenuItemImage::create(
+        "huafei.png",
+        "huafei.png",
+        CC_CALLBACK_1(Main::menuCloseCallback, this));
+	huafei->setScale(visibleSize.width / 18 / huafei->getContentSize().width);
+	x = origin.x + visibleSize.width *7/20;
+	y = origin.y + visibleSize.height / 12;
+	huafei->setPosition(Vec2(x,y));
 
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
+	auto beibao = MenuItemImage::create(
+		"beibao.png",
+		"beibao.png",
+		CC_CALLBACK_1(Main::menuCloseCallback, this));
+	beibao->setScale(visibleSize.width / 18 /beibao->getContentSize().width);
+	x = origin.x + visibleSize.width * 9/20;
+	y = origin.y + visibleSize.height / 12;
+	beibao->setPosition(Vec2(x, y));
+
+    auto menu = Menu::create(learn,shuihu,huafei,beibao, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
+    auto background = Sprite::create("back.png");
+    // position the sprite on the center of the screen
+	background->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+	background->setContentSize(visibleSize);
+    // add the sprite as a child to this layer
+    this->addChild(background, 0);
 
-    // add a label shows "Hello World"
-    // create and initialize a label
+	auto map = TMXTiledMap::create("land.tmx");
+	map->setAnchorPoint(Vec2(0.5,0.5));
+	map->setScale(visibleSize.width*4/5/ map->getContentSize().width);
+	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7);
+	addChild(map,1);
+	
+	auto pet = Sprite::create("dog.png");
+	pet->setScale(visibleSize.height * 1 / 5 / pet->getContentSize().height);
+	pet->setPosition(origin.x+visibleSize.width*0.9, origin.y+visibleSize.height*0.15);
+	addChild(pet,2);
 
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    if (label == nullptr)
-    {
-        problemLoading("'fonts/Marker Felt.ttf'");
-    }
-    else
-    {
-        // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                                origin.y + visibleSize.height - label->getContentSize().height));
-
-        // add the label as a child to this layer
-        this->addChild(label, 1);
-    }
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
-    }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
     return true;
 }
 
 
-void HelloWorld::menuCloseCallback(Ref* pSender)
+void Main::menuCloseCallback(Ref* pSender)
 {
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();

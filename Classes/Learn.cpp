@@ -5,6 +5,7 @@
 USING_NS_CC;
 
 Scene* Learn::createScene() {
+
 	return Learn::create();
 }
 
@@ -38,22 +39,35 @@ bool Learn::init() {
 
 	auto mathImage = MenuItemImage::create("math.png", "math.png", CC_CALLBACK_1(Learn::onClickMathCallBack, this));
 	mathImage->setAnchorPoint(Vec2(0, 0));
-	mathImage->setScale(mathImage->getContentSize().width / visibleSize.width * 2);
-	mathImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.6) / 2, (orgin.y + visibleSize.height * 0.90) / 2));
+	mathImage->setScale(visibleSize.width * 0.1 / mathImage->getContentSize().width);
+	mathImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.6) / 2, (orgin.y + visibleSize.height ) / 2));
 	layer1->addChild(mathImage, 1);
 	auto chineseImage = MenuItemImage::create("chinese.png", "chinese.png", CC_CALLBACK_1(Learn::onClickChineseCallBack, this));
 	chineseImage->setAnchorPoint(Vec2(0, 0));
-	chineseImage->setScale(chineseImage->getContentSize().width / visibleSize.width * 2);
-	chineseImage->setPosition(Vec2((orgin.x + visibleSize.width * 1.245) / 2, (orgin.y + visibleSize.height * 0.90) / 2));
+	chineseImage->setScale(visibleSize.width * 0.1 / chineseImage->getContentSize().width);
+	chineseImage->setPosition(Vec2((orgin.x + visibleSize.width * 1.245) / 2, (orgin.y + visibleSize.height) / 2));
 	layer1->addChild(chineseImage, 3);
 
 	auto englishImage = MenuItemImage::create("english.png", "chinese.png", CC_CALLBACK_1(Learn::onClickEnglishCallBack, this));
 	englishImage->setAnchorPoint(Vec2::ZERO);
-	englishImage->setScale(englishImage->getContentSize().width / visibleSize.width * 2);
-	englishImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.92) / 2, (orgin.y + visibleSize.height * 0.90) / 2));
+	englishImage->setScale(visibleSize.width * 0.1 / englishImage->getContentSize().width);
+	englishImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.92) / 2, (orgin.y + visibleSize.height) / 2));
 	layer1->addChild(englishImage, 2);
 
+	auto jiantou = MenuItemImage::create("jiantou.png", "jiantou.png", CC_CALLBACK_1(Learn::onClickJiantouCallBack, this));
+	jiantou->setAnchorPoint(Vec2(0, 0));
+	jiantou->setScale(visibleSize.width * 0.1 / jiantou->getContentSize().width);
+	jiantou->setPosition(Vec2(orgin.x + visibleSize.width * 0.03, orgin.y + visibleSize.height * 0.80));
+
+	auto menu = Menu::create(jiantou, NULL);
+	menu->setPosition(Vec2::ZERO);
+	layer1->addChild(menu, 2);
+
 	return true;
+}
+
+void Learn::onClickJiantouCallBack(cocos2d::Ref* english) {
+	Director::getInstance()->popScene();
 }
 
 void Learn::onClickMathCallBack(cocos2d::Ref* math) {

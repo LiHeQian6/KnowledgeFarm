@@ -25,6 +25,9 @@
 #include "MainScene.h"
 #include "SimpleAudioEngine.h"
 #include "ui/CocosGUI.h"
+#include "Learn.h"
+#include "Shop.h"
+#include <Learn.h>
 USING_NS_CC;
 
 Scene* Main::createScene()
@@ -55,7 +58,7 @@ bool Main::init()
 	auto learn = MenuItemImage::create(
 		"learn.png",
 		"learn.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
+		CC_CALLBACK_1(Main::intoLearnPageCallback, this));
 	learn->setScale(visibleSize.width/6/ learn->getContentSize().width);
 	float x = origin.x + visibleSize.width * 1 / 10;
 	float y = origin.y + visibleSize.height/8;
@@ -110,7 +113,7 @@ bool Main::init()
 	auto shop = MenuItemImage::create(
 		"shop.png",
 		"shop.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
+		CC_CALLBACK_1(Main::intoShopPageCallback, this));
 	shop->setScale(visibleSize.width / 18 / shop->getContentSize().width);
 	x = origin.x + visibleSize.width * 16 / 20;
 	y = origin.y + visibleSize.height * 11 / 12;
@@ -128,8 +131,8 @@ bool Main::init()
     this->addChild(background, 0);
 
 	auto map = TMXTiledMap::create("land.tmx");
-	map->setAnchorPoint(Vec2(0.5,0.5));
-	map->setScale(visibleSize.width*4/5/ map->getContentSize().width);
+	map->setAnchorPoint(Vec2(0.45,0.5));
+	map->setScale(visibleSize.height *0.38/ map->getContentSize().height);
 	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7);
 	addChild(map,1);
 	
@@ -180,16 +183,15 @@ bool Main::init()
     return true;
 }
 
+void Main::intoLearnPageCallback(Ref* pSender) {
+	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Learn::createScene()));
+}
+
+void Main::intoShopPageCallback(Ref* pSender) {
+	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Shop::createScene()));
+}
 
 void Main::menuCloseCallback(Ref* pSender)
 {
-    //Close the cocos2d-x game scene and quit the application
-    Director::getInstance()->end();
-
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
-    //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
-
 
 }

@@ -4,7 +4,7 @@
 #pragma once
 #include "cocos2d.h"
 
-class Learn : public cocos2d::Scene {
+class Learn : public cocos2d::Scene{
 
 public:
 	static cocos2d::Scene* createScene();
@@ -15,6 +15,8 @@ public:
 	void onClickChineseCallBack(cocos2d::Ref* chinese);
 
 	void onClickEnglishCallBack(cocos2d::Ref* english);
+
+	void onClickJiantouCallBack(cocos2d::Ref* english);
 	CREATE_FUNC(Learn);
 };
 #endif

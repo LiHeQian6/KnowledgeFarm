@@ -21,10 +21,10 @@
     <ClCompile Include="..\Classes\MainScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Shop.cpp">
+    <ClCompile Include="..\Classes\Learn.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Learn.cpp">
+    <ClCompile Include="..\Classes\Shop.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +38,10 @@
     <ClInclude Include="..\Classes\MainScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Shop.h">
+    <ClInclude Include="..\Classes\Learn.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Learn.h">
+    <ClInclude Include="..\Classes\Shop.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

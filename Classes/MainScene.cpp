@@ -158,13 +158,20 @@ bool Main::init()
 	progress->setScale(visibleSize.width * 1 / 5 / progress->getContentSize().width);
 	userInfo->addChild(progress);
 
-	cocos2d::ui::LoadingBar* loadingBar = cocos2d::ui::LoadingBar::create("progressfull.png");
-	loadingBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
-	loadingBar->setPosition(Vec2(origin.x + visibleSize.width * 0.08, origin.y + visibleSize.height*0.785));
-	loadingBar->setAnchorPoint(Vec2(0,0));
-	loadingBar->setScale(visibleSize.width * 1 /5 / loadingBar->getContentSize().width);
-	loadingBar->setPercent(100);
-	userInfo->addChild(loadingBar);
+	cocos2d::ui::LoadingBar* experienceBar = cocos2d::ui::LoadingBar::create("progressfull.png");
+	experienceBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
+	experienceBar->setPosition(Vec2(origin.x + visibleSize.width * 0.08, origin.y + visibleSize.height*0.785));
+	experienceBar->setAnchorPoint(Vec2(0,0));
+	experienceBar->setScale(visibleSize.width * 1 /5 / experienceBar->getContentSize().width);
+	experienceBar->setPercent(25);
+	userInfo->addChild(experienceBar);
+
+	auto experience = Label::createWithTTF(u8"20/100 ", "fonts/font.ttf", 10);
+	experience->setColor(Color3B::WHITE);
+	experience->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.785);
+	experience->setAnchorPoint(Vec2(0, 0));
+	userInfo->addChild(experience);
+
 
 	addChild(userInfo);
 

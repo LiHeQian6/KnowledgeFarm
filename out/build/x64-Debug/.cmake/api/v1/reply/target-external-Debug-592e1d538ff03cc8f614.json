@@ -45,13 +45,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 26,
+				"line" : 126,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 126,
+				"line" : 26,
 				"parent" : 0
 			},
 			{
@@ -111,7 +111,7 @@
 			"defines" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"define" : "LWS_WITH_LIBUV"
 				}
 			],
@@ -122,97 +122,97 @@
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/editor-support"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/recast/.."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/tinyxml2/."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/xxhash/."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/xxtea/."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/clipper/."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/edtaa3func/."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/ConvertUTF/."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/poly2tri/.."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/md5/.."
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 2,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/unzip/."
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/Box2D/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/chipmunk/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/freetype2/include/win32/freetype2"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/jpeg/include/win32"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/uv/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/webp/include/win32"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/bullet/include"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/bullet/include/bullet"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/openssl/include/win32"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/tiff/include/win32"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"isSystem" : true,
 					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/websockets/include/win32"
 				},
@@ -278,43 +278,43 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "ext_md5::@82bef7d6fa8c2aa61808"
+			"id" : "ext_unzip::@05a8bf1aba81c1a16e64"
 		},
 		{
-			"backtrace" : 2,
-			"id" : "ext_convertUTF::@205c2f0e44a3b06b9b59"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "ext_poly2tri::@ce0bfd23a4070be0c5de"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "ext_recast::@49aedbc985f97720d891"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "ext_xxtea::@95546a4b2abc077b0042"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "ext_clipper::@33abc919e86db66c28b8"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "ext_edtaa3func::@f3d42e550923b89477b0"
-		},
-		{
-			"backtrace" : 2,
+			"backtrace" : 3,
 			"id" : "ext_xxhash::@11e20b8b9139209a045a"
 		},
 		{
-			"backtrace" : 2,
+			"backtrace" : 3,
+			"id" : "ext_xxtea::@95546a4b2abc077b0042"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "ext_clipper::@33abc919e86db66c28b8"
+		},
+		{
+			"backtrace" : 3,
 			"id" : "ext_tinyxml2::@fd6ab661f4ee25a21ef0"
 		},
 		{
 			"backtrace" : 3,
-			"id" : "ext_unzip::@05a8bf1aba81c1a16e64"
+			"id" : "ext_poly2tri::@ce0bfd23a4070be0c5de"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "ext_edtaa3func::@f3d42e550923b89477b0"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "ext_convertUTF::@205c2f0e44a3b06b9b59"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "ext_md5::@82bef7d6fa8c2aa61808"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "ext_recast::@49aedbc985f97720d891"
 		}
 	],
 	"folder" : 

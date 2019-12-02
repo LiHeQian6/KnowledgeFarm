@@ -778,14 +778,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "KnowledgeFarm::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-KnowledgeFarm-Debug-c26fc53a1ee7211317a9.json",
+					"jsonFile" : "target-KnowledgeFarm-Debug-dad4fda16adf391fd1d5.json",
 					"name" : "KnowledgeFarm",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "cocos2d::@b17589fc6237857a1771",
-					"jsonFile" : "target-cocos2d-Debug-ccdcb2303ed4c7ae0a44.json",
+					"jsonFile" : "target-cocos2d-Debug-29ffad451193a34aa148.json",
 					"name" : "cocos2d",
 					"projectIndex" : 0
 				},
@@ -862,7 +862,7 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "external::@62470bbe2074d04a1904",
-					"jsonFile" : "target-external-Debug-2d164d5b1a9960a51f26.json",
+					"jsonFile" : "target-external-Debug-592e1d538ff03cc8f614.json",
 					"name" : "external",
 					"projectIndex" : 1
 				}

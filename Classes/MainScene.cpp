@@ -1,30 +1,9 @@
-﻿/****************************************************************************
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
- http://www.cocos2d-x.org
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-
-#include "MainScene.h"
+﻿#include "MainScene.h"
 #include "SimpleAudioEngine.h"
 #include "ui/CocosGUI.h"
+#include "Learn.h"
+#include "Shop.h"
+#include "Settings.h"
 USING_NS_CC;
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1900)
@@ -60,7 +39,7 @@ bool Main::init()
 	auto learn = MenuItemImage::create(
 		"learn.png",
 		"learn.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
+		CC_CALLBACK_1(Main::intoLearnPageCallback, this));
 	learn->setScale(visibleSize.width/6/ learn->getContentSize().width);
 	float x = origin.x + visibleSize.width * 1 / 10;
 	float y = origin.y + visibleSize.height/8;
@@ -97,7 +76,7 @@ bool Main::init()
 	auto setting = MenuItemImage::create(
 		"setting.png",
 		"setting.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
+		CC_CALLBACK_1(Main::intoSettingsCallback, this));
 	setting->setScale(visibleSize.width / 18 / setting->getContentSize().width);
 	x = origin.x + visibleSize.width * 18 / 19;
 	y = origin.y + visibleSize.height * 11 / 12;
@@ -115,7 +94,7 @@ bool Main::init()
 	auto shop = MenuItemImage::create(
 		"shop.png",
 		"shop.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
+		CC_CALLBACK_1(Main::intoShopPageCallback, this));
 	shop->setScale(visibleSize.width / 18 / shop->getContentSize().width);
 	x = origin.x + visibleSize.width * 16 / 20;
 	y = origin.y + visibleSize.height * 11 / 12;
@@ -133,8 +112,8 @@ bool Main::init()
     this->addChild(background, 0);
 
 	auto map = TMXTiledMap::create("land.tmx");
-	map->setAnchorPoint(Vec2(0.5,0.5));
-	map->setScale(visibleSize.width*4/5/ map->getContentSize().width);
+	map->setAnchorPoint(Vec2(0.45,0.5));
+	map->setScale(visibleSize.height *0.38/ map->getContentSize().height);
 	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7);
 	addChild(map,1);
 	
@@ -192,16 +171,19 @@ bool Main::init()
     return true;
 }
 
+void Main::intoLearnPageCallback(Ref* pSender) {
+	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Learn::createScene()));
+}
+
+void Main::intoShopPageCallback(Ref* pSender) {
+	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Shop::createScene()));
+}
+
+void Main::intoSettingsCallback(cocos2d::Ref* pSender) {
+	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Settings::createScene()));
+}
 
 void Main::menuCloseCallback(Ref* pSender)
 {
-    //Close the cocos2d-x game scene and quit the application
-    Director::getInstance()->end();
-
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
-    //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
-
 
 }

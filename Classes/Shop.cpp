@@ -68,9 +68,9 @@ bool Shop::init() {
 	map3->setPosition(Vec2(orgin.x + visibleSize.width * 0.05, orgin.y + visibleSize.height * 0.55));
 	layer1->addChild(map3, 3);
 
-	//ShowFlower(layer1,map3,1);
-	//ShowFlower(layer1,map2,2);
-	//ShowFlower(layer1,map1,3);
+	ShowFlower(layer1,map3,1);
+	ShowFlower(layer1,map2,2);
+	ShowFlower(layer1,map1,3);
 	return true;
 }
 

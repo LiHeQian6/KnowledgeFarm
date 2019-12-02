@@ -1,0 +1,368 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug/CMakeFiles/3.15.19080502-MSVC_2/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug/CMakeFiles/3.15.19080502-MSVC_2/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug/CMakeFiles/3.15.19080502-MSVC_2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Compiler/MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Platform/Windows-MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug/CMakeFiles/3.15.19080502-MSVC_2/CMakeRCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Compiler/MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Platform/Windows-MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "cocos2d/cmake/Modules/CocosBuildSet.cmake"
+		},
+		{
+			"path" : "cocos2d/cmake/Modules/CocosBuildHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.15/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"path" : "cocos2d/cmake/Modules/CocosConfigDefine.cmake"
+		},
+		{
+			"path" : "cocos2d/cmake/Modules/CocosConfigDepend.cmake"
+		},
+		{
+			"path" : "cocos2d/cocos/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/2d/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/3d/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/platform/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/physics/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/physics3d/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/math/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/navmesh/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/renderer/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/vr/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/base/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/deprecated/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/ui/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/network/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/audio/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/storage/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/editor-support/cocosbuilder/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/editor-support/cocostudio/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/cocos/editor-support/spine/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/extensions/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/Box2D/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/chipmunk/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/freetype2/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/recast/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/bullet/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/jpeg/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/openssl/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/tiff/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/uv/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/webp/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/websockets/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/tinyxml2/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/xxhash/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/xxtea/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/clipper/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/edtaa3func/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/ConvertUTF/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/poly2tri/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/md5/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/curl/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/png/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/sqlite3/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/win32-specific/gles/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/win32-specific/icon/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/win32-specific/MP3Decoder/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/win32-specific/OggDecoder/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/win32-specific/OpenalSoft/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/glfw3/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/zlib/CMakeLists.txt"
+		},
+		{
+			"path" : "cocos2d/external/cmake/CocosExternalConfig.cmake"
+		},
+		{
+			"path" : "cocos2d/external/unzip/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "E:/TeamGit/KnowledgeFarm/out/build/x64-Debug",
+		"source" : "E:/TeamGit/KnowledgeFarm"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

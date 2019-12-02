@@ -1,0 +1,805 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "bin/KnowledgeFarm/KnowledgeFarm.exe"
+		},
+		{
+			"path" : "bin/KnowledgeFarm/KnowledgeFarm.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 117,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 124,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 125,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /MP"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "CC_STATIC"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "COCOS2D_DEBUG=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "LWS_WITH_LIBUV"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_CRT_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_SCL_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_WIN32"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_WINDOWS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "E:/TeamGit/KnowledgeFarm/Classes"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/audio/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/extensions"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/platform"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/base"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/editor-support"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/platform/win32"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/recast/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/tinyxml2/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/xxhash/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/xxtea/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/clipper/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/edtaa3func/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/ConvertUTF/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/poly2tri/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/md5/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/unzip/."
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/Box2D/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/chipmunk/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/freetype2/include/win32/freetype2"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/jpeg/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/uv/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/webp/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/bullet/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/bullet/include/bullet"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/openssl/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/tiff/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/websockets/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/curl/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/png/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/sqlite3/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/gles/include/OGLES"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/icon/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/MP3Decoder/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/OggDecoder/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/OpenalSoft/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/glfw3/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/zlib/../win32-specific/zlib/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				4,
+				5,
+				6,
+				25
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DWIN32 -D_DEBUG  "
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "CC_STATIC"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "COCOS2D_DEBUG=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "LWS_WITH_LIBUV"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_CRT_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_SCL_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_WIN32"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_WINDOWS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "E:/TeamGit/KnowledgeFarm/Classes"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/audio/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/extensions"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/platform"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/base"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/editor-support"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/cocos/platform/win32"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/recast/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/tinyxml2/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/xxhash/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/xxtea/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/clipper/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/edtaa3func/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/ConvertUTF/."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/poly2tri/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/md5/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/unzip/."
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/Box2D/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/chipmunk/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/freetype2/include/win32/freetype2"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/jpeg/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/uv/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/webp/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/bullet/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/bullet/include/bullet"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/openssl/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/tiff/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/websockets/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/curl/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/png/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/sqlite3/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/gles/include/OGLES"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/icon/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/MP3Decoder/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/OggDecoder/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/win32-specific/OpenalSoft/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/glfw3/include/win32"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/TeamGit/KnowledgeFarm/cocos2d/external/zlib/../win32-specific/zlib/include"
+				}
+			],
+			"language" : "RC",
+			"sourceIndexes" : 
+			[
+				7
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "external::@62470bbe2074d04a1904"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "cocos2d::@b17589fc6237857a1771"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_md5::@82bef7d6fa8c2aa61808"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_convertUTF::@205c2f0e44a3b06b9b59"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_poly2tri::@ce0bfd23a4070be0c5de"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_recast::@49aedbc985f97720d891"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_xxtea::@95546a4b2abc077b0042"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_clipper::@33abc919e86db66c28b8"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_edtaa3func::@f3d42e550923b89477b0"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_xxhash::@11e20b8b9139209a045a"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_tinyxml2::@fd6ab661f4ee25a21ef0"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "ext_unzip::@05a8bf1aba81c1a16e64"
+		}
+	],
+	"id" : "KnowledgeFarm::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console /SUBSYSTEM:WINDOWS",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "lib\\cocos2d.lib lib\\external.lib ..\\..\\..\\cocos2d\\external\\Box2D\\prebuilt\\win32\\debug\\libbox2d.lib ..\\..\\..\\cocos2d\\external\\chipmunk\\prebuilt\\win32\\debug-lib\\libchipmunk.lib ..\\..\\..\\cocos2d\\external\\freetype2\\prebuilt\\win32\\freetype.lib lib\\ext_recast.lib ..\\..\\..\\cocos2d\\external\\jpeg\\prebuilt\\win32\\libjpeg.lib ..\\..\\..\\cocos2d\\external\\webp\\prebuilt\\win32\\libwebp.lib ..\\..\\..\\cocos2d\\external\\bullet\\prebuilt\\win32\\debug\\libbullet.lib ..\\..\\..\\cocos2d\\external\\tiff\\prebuilt\\win32\\libtiff.lib ..\\..\\..\\cocos2d\\external\\websockets\\prebuilt\\win32\\websockets.lib ..\\..\\..\\cocos2d\\external\\uv\\prebuilt\\win32\\uv_a.lib ..\\..\\..\\cocos2d\\external\\openssl\\prebuilt\\win32\\libssl.lib ..\\..\\..\\cocos2d\\external\\openssl\\prebuilt\\win32\\libcrypto.lib lib\\ext_tinyxml2.lib lib\\ext_xxhash.lib lib\\ext_xxtea.lib lib\\ext_clipper.lib lib\\ext_edtaa3func.lib lib\\ext_convertUTF.lib lib\\ext_poly2tri.lib lib\\ext_md5.lib ..\\..\\..\\cocos2d\\external\\curl\\prebuilt\\win32\\libcurl.lib ..\\..\\..\\cocos2d\\external\\png\\prebuilt\\win32\\libpng.lib ..\\..\\..\\cocos2d\\external\\sqlite3\\libraries\\win32\\sqlite3.lib ..\\..\\..\\cocos2d\\external\\win32-specific\\gles\\prebuilt\\glew32.lib ..\\..\\..\\cocos2d\\external\\win32-specific\\icon\\prebuilt\\libiconv.lib ..\\..\\..\\cocos2d\\external\\win32-specific\\MP3Decoder\\prebuilt\\libmpg123.lib ..\\..\\..\\cocos2d\\external\\win32-specific\\OggDecoder\\prebuilt\\libogg.lib ..\\..\\..\\cocos2d\\external\\win32-specific\\OggDecoder\\prebuilt\\libvorbis.lib ..\\..\\..\\cocos2d\\external\\win32-specific\\OggDecoder\\prebuilt\\libvorbisfile.lib ..\\..\\..\\cocos2d\\external\\win32-specific\\OpenalSoft\\prebuilt\\OpenAL32.lib ..\\..\\..\\cocos2d\\external\\glfw3\\prebuilt\\win32\\glfw3.lib ..\\..\\..\\cocos2d\\external\\zlib\\..\\win32-specific\\zlib\\prebuilt\\libzlib.lib lib\\ext_unzip.lib ws2_32.lib userenv.lib psapi.lib winmm.lib Version.lib Iphlpapi.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "KnowledgeFarm",
+	"nameOnDisk" : "KnowledgeFarm.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				4,
+				5,
+				6,
+				7,
+				25
+			]
+		},
+		{
+			"name" : "Resources",
+			"sourceIndexes" : 
+			[
+				8,
+				9,
+				10,
+				13,
+				15,
+				16,
+				17,
+				19,
+				20,
+				21,
+				22,
+				23
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				11,
+				12,
+				14,
+				18,
+				24
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"path" : "Classes/AppDelegate.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Classes/HelloWorldScene.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "proj.win32/main.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "proj.win32/resource.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Classes/AppDelegate.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Classes/HelloWorldScene.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "proj.win32/main.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "proj.win32/game.rc",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/ccenter.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/center.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/centerbot.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/fonts/Marker Felt.ttf",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/fonts/arial.ttf",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/land.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/land.tmx",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/left.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/leftbot.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/leftcenter.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/res/.gitkeep",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/right.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/rightbot.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/rightcenter.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/shopBackground.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/shopMap.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Resources/shopMap.tmx",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "cocos2d/cocos/precheader.cpp",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "EXECUTABLE"
+}

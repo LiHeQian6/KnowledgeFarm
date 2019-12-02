@@ -23,7 +23,7 @@
  ****************************************************************************/
 
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -38,6 +38,10 @@ using namespace cocos2d::experimental;
 #elif USE_SIMPLE_AUDIO_ENGINE
 #include "audio/include/SimpleAudioEngine.h"
 using namespace CocosDenshion;
+#endif
+
+#ifdef WIN32
+#pragma execution_character_set("utf-8")
 #endif
 
 USING_NS_CC;
@@ -91,13 +95,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    //director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
 
 	//set windows size
-	glview->setFrameSize(960, 540);
+	//glview->setFrameSize(960, 540);
 
     // Set the design resolution
     glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
@@ -121,8 +125,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-
-    auto scene = HelloWorld::createScene();
+    auto scene = Main::createScene();
 
     // run
     director->runWithScene(scene);

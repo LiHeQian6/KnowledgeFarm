@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="isometric" renderorder="right-down" compressionlevel="0" width="6" height="3" tilewidth="95" tileheight="51" infinite="0" backgroundcolor="#00000000" nextlayerid="2" nextobjectid="1">
- <tileset firstgid="1" name="land" tilewidth="95" tileheight="51" tilecount="1" columns="1">
-  <image source="land.png" width="95" height="51"/>
+<map version="1.2" tiledversion="1.3.1" orientation="isometric" renderorder="right-down" compressionlevel="0" width="6" height="3" tilewidth="180" tileheight="96" infinite="0" backgroundcolor="#00000000" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="land" tilewidth="189" tileheight="101" tilecount="1" columns="1">
+  <image source="land.png" width="189" height="101"/>
  </tileset>
  <layer id="1" name="map1" width="6" height="3" offsetx="1.74096" offsety="3.47965">
   <data encoding="base64" compression="gzip">

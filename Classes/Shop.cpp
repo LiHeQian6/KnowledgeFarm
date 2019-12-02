@@ -23,11 +23,8 @@ bool Shop::init() {
 	addChild(layer1, 2);
 	auto layer2 = Layer::create();
 	addChild(layer2, 3);
-
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 orgin = Director::getInstance()->getVisibleOrigin();
-
-	auto rect = Director::getInstance()->getOpenGLView()->getVisibleRect();
 
 	auto jiantou = MenuItemImage::create("jiantou.png", "jiantou.png", CC_CALLBACK_1(Shop::menuJiantouCallback, this));
 	jiantou->setAnchorPoint(Vec2(0, 0));
@@ -71,17 +68,28 @@ bool Shop::init() {
 	map3->setPosition(Vec2(orgin.x + visibleSize.width * 0.05, orgin.y + visibleSize.height * 0.55));
 	layer1->addChild(map3, 3);
 
-	ShowFlower(map3);
+	//ShowFlower(layer1,map3,1);
+	//ShowFlower(layer1,map2,2);
+	//ShowFlower(layer1,map1,3);
 	return true;
 }
 
-void Shop::ShowFlower(TMXTiledMap* map) {
+void Shop::ShowFlower(Layer* layer1,TMXTiledMap* map,int count) {
+	Vec2 orgin = Director::getInstance()->getVisibleOrigin();
+	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto layer = map->getObjectGroup("flower");
-	//auto ob1 = layer->getObject("flower1").
-	auto flower = Sprite::create("meigui.png");
-	/*flower->setPosition(Vec2(pos));*/
-	flower->setAnchorPoint(Vec2(0, 0));
-	addChild(flower);
+	auto tileSize = map->getTileSize();
+	auto ob1 = layer->getObjects();
+	for (ValueVector::iterator it = ob1.begin(); it != ob1.end(); it++) {
+		Value obj = *it;
+		ValueMap map = obj.asValueMap();
+		auto flower = Sprite::create("meigui.png");
+		flower->setScale(visibleSize.height * 0.15 / flower->getContentSize().height);
+		flower->setAnchorPoint(Vec2(0, 0));
+		flower->setPosition(Vec2(orgin.x + map.at("x").asFloat()+ visibleSize.width/9, orgin.y + map.at("y").asFloat()+ visibleSize.height / 18+ visibleSize.height *0.25*(count-1)));
+		layer1->addChild(flower,2);
+	}
+
 }
 
 void Shop::menuJiantouCallback(Ref* pSender) {

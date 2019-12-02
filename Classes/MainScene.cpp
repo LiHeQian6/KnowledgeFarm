@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
@@ -26,6 +26,11 @@
 #include "SimpleAudioEngine.h"
 #include "ui/CocosGUI.h"
 USING_NS_CC;
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1900)
+#pragma execution_character_set("utf-8")
+#endif
+
 
 Scene* Main::createScene()
 {
@@ -141,39 +146,46 @@ bool Main::init()
 	auto userInfo = Layer::create();
 	auto photo = Sprite::create("photo.png");
 	photo->setScale(visibleSize.height * 1 / 8 / photo->getContentSize().height);
-	photo->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.9);
+	photo->setPosition(origin.x + visibleSize.width * 0.05, origin.y + visibleSize.height * 0.9);
 	userInfo->addChild(photo);
 
-	auto nickName = Label::createWithTTF("nickName", "fonts/arial.ttf", 16);
-	nickName->setPosition(origin.x + visibleSize.width * 0.15, origin.y + visibleSize.height * 0.92);
+	auto nickName = Label::createWithTTF(u8"昵称 ", "fonts/font.ttf", 16);
+	nickName->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.92);
 	nickName->setAnchorPoint(Vec2(0, 0));
 	nickName->setColor(Color3B::BLACK);
 	userInfo->addChild(nickName);
 
-	auto account = Label::createWithTTF("account:15246546", "fonts/arial.ttf", 10);
+	auto account = Label::createWithTTF(u8"id:15246546", "fonts/font.ttf", 10);
 	account->setColor(Color3B::BLACK);
-	account->setPosition(origin.x + visibleSize.width * 0.15, origin.y + visibleSize.height * 0.85);
+	account->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.83);
 	account->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(account);
 
-	auto lv = Label::createWithTTF("lv: 60", "fonts/arial.ttf", 10);
+	auto lv = Label::createWithTTF("lv: 60", "fonts/font.ttf", 10);
 	lv->setColor(Color3B::BLACK);
-	lv->setPosition(origin.x + visibleSize.width * 0.15, origin.y + visibleSize.height * 0.88);
+	lv->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.9);
 	lv->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(lv);
 
-	auto money = Label::createWithTTF("money: 60", "fonts/arial.ttf", 10);
+	auto money = Label::createWithTTF(u8"金币:60 ", "fonts/font.ttf", 10);
 	money->setColor(Color3B::BLACK);
-	money->setPosition(origin.x + visibleSize.width * 0.22, origin.y + visibleSize.height * 0.88);
+	money->setPosition(origin.x + visibleSize.width * 0.17, origin.y + visibleSize.height * 0.9);
 	money->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(money);
 
-	/*cocos2d::ui::LoadingBar* loadingBar = cocos2d::ui::LoadingBar::create("progress.png");
-	loadingBar->setDirection(cocos2d::ui::LoadingBar::Direction::RIGHT);
-	loadingBar->setPosition(Vec2(111,111));
-	loadingBar->setScale(0.1f);
+	auto progress = Sprite::create("progressempty.png");
+	progress->setPosition(Vec2(origin.x + visibleSize.width * 0.08, origin.y + visibleSize.height * 0.785));
+	progress->setAnchorPoint(Vec2(0, 0));
+	progress->setScale(visibleSize.width * 1 / 5 / progress->getContentSize().width);
+	userInfo->addChild(progress);
+
+	cocos2d::ui::LoadingBar* loadingBar = cocos2d::ui::LoadingBar::create("progressfull.png");
+	loadingBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
+	loadingBar->setPosition(Vec2(origin.x + visibleSize.width * 0.08, origin.y + visibleSize.height*0.785));
+	loadingBar->setAnchorPoint(Vec2(0,0));
+	loadingBar->setScale(visibleSize.width * 1 /5 / loadingBar->getContentSize().width);
 	loadingBar->setPercent(100);
-	userInfo->addChild(loadingBar);*/
+	userInfo->addChild(loadingBar);
 
 	addChild(userInfo);
 

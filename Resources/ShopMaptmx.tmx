@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="6" height="1" tilewidth="273" tileheight="56" infinite="0" nextlayerid="13" nextobjectid="19">
+ <tileset firstgid="1" name="huojia1" tilewidth="319" tileheight="56" tilecount="1" columns="1">
+  <image source="huojia1.png" width="319" height="56"/>
+ </tileset>
+ <tileset firstgid="2" name="huojia2" tilewidth="273" tileheight="56" tilecount="1" columns="1">
+  <image source="huojia2.png" width="273" height="56"/>
+ </tileset>
+ <tileset firstgid="3" name="huojia3" tilewidth="319" tileheight="56" tilecount="1" columns="1">
+  <image source="huojia3.png" width="319" height="56"/>
+ </tileset>
+ <layer id="6" name="1" width="6" height="1" offsetx="-36.2644" offsety="0">
+  <data encoding="base64" compression="zlib">
+   eAFjZMAOAAAwAAI=
+  </data>
+ </layer>
+ <layer id="7" name="2" width="6" height="1">
+  <data encoding="base64" compression="zlib">
+   eAFjYGBgYELDQC4DAACIAAk=
+  </data>
+ </layer>
+ <layer id="8" name="3" width="6" height="1">
+  <data encoding="base64" compression="zlib">
+   eAFjYMAEzEAhAAAkAAQ=
+  </data>
+ </layer>
+ <objectgroup id="12" name="flower">
+  <object id="13" name="flower1" x="35.795" y="-235.826" width="200.031" height="267.41"/>
+  <object id="14" name="flower1" x="308.468" y="-236.879" width="200.031" height="267.41"/>
+  <object id="15" name="flower1" x="584.3" y="-241.09" width="200.031" height="267.41"/>
+  <object id="16" name="flower1" x="855.921" y="-243.196" width="200.031" height="267.41"/>
+  <object id="17" name="flower1" x="1125.44" y="-243.196" width="200.031" height="267.41"/>
+  <object id="18" name="flower1" x="1401.27" y="-241.09" width="200.031" height="267.41"/>
+ </objectgroup>
+</map>

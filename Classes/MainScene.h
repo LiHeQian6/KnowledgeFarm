@@ -17,6 +17,8 @@ public:
 	void intoLearnPageCallback(cocos2d::Ref* pSender);
 
 	void intoShopPageCallback(cocos2d::Ref* pSender);
+
+	void intoSettingsCallback(cocos2d::Ref* pSender);
     // implement the "static create()" method manually
     CREATE_FUNC(Main);
 };

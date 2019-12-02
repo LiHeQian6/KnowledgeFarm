@@ -52,12 +52,14 @@ list(APPEND GAME_SOURCE
      Classes/MainScene.cpp
 	 Classes/Shop.cpp
 	 Classes/Learn.cpp
+	 Classes/Settings.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/MainScene.h
 	 Classes/Shop.h
 	 Classes/Learn.h
+	 Classes/Settings.h
      )
 
 if(ANDROID)

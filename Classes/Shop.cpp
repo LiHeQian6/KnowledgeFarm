@@ -44,7 +44,7 @@ bool Shop::init() {
 	text->setPosition(Vec2(orgin.x + visibleSize.width / 2, orgin.y + visibleSize.height * 0.92));
 	layer2->addChild(text, 1);
 
-	auto background = Sprite::create("shopBack.png");
+	auto background = Sprite::create("background.png");
 	background->setAnchorPoint(Vec2(0, 0));
 	//background->setContentSize(Size(frameSize.width, frameSize.height));
 	background->setScaleX(visibleSize.width / background->getContentSize().width);
@@ -70,7 +70,18 @@ bool Shop::init() {
 	map3->setAnchorPoint(Vec2(0, 0));
 	map3->setPosition(Vec2(orgin.x + visibleSize.width * 0.05, orgin.y + visibleSize.height * 0.55));
 	layer1->addChild(map3, 3);
+
+	ShowFlower(map3);
 	return true;
+}
+
+void Shop::ShowFlower(TMXTiledMap* map) {
+	auto layer = map->getObjectGroup("flower");
+	//auto ob1 = layer->getObject("flower1").
+	auto flower = Sprite::create("meigui.png");
+	/*flower->setPosition(Vec2(pos));*/
+	flower->setAnchorPoint(Vec2(0, 0));
+	addChild(flower);
 }
 
 void Shop::menuJiantouCallback(Ref* pSender) {

@@ -11,8 +11,8 @@ public:
 
     virtual bool init();
     
-	void CreateLayer(cocos2d::Size visibleSize, cocos2d::Vec2 origin);
-
+	void createUserInfoLayer(cocos2d::Size visibleSize, cocos2d::Vec2 origin);
+	void menuLayer(cocos2d::Size visibleSize, cocos2d::Vec2 origin);
 	void CreateBagLayer(cocos2d::Size visibleSize, cocos2d::Vec2 origin,cocos2d::Layer* layer);
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);

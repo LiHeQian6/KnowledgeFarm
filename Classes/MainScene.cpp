@@ -33,80 +33,10 @@ bool Main::init()
     {
         return false;
     }
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	
-	auto layer = Layer::create();
-	this->addChild(layer, 99);
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	auto learn = MenuItemImage::create(
-		"learn.png",
-		"learn.png",
-		CC_CALLBACK_1(Main::intoLearnPageCallback, this));
-	learn->setScale(visibleSize.width/6/ learn->getContentSize().width);
-	float x = origin.x + visibleSize.width * 1 / 10;
-	float y = origin.y + visibleSize.height/8;
-	learn->setPosition(Vec2(x, y));
-
-	auto shuihu = MenuItemImage::create(
-		"shuihu.png",
-		"shuihu.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
-	shuihu->setScale(visibleSize.width / 14 / shuihu->getContentSize().width);
-	shuihu->setAnchorPoint(Vec2(0.4, 0.5));
-	x = origin.x + visibleSize.width * 5/20;
-	y = origin.y + visibleSize.height / 12;
-	shuihu->setPosition(Vec2(x, y));
-
-    auto huafei = MenuItemImage::create(
-        "huafei.png",
-        "huafei.png",
-        CC_CALLBACK_1(Main::menuCloseCallback, this));
-	huafei->setScale(visibleSize.width / 18 / huafei->getContentSize().width);
-	x = origin.x + visibleSize.width *7/20;
-	y = origin.y + visibleSize.height / 12;
-	huafei->setPosition(Vec2(x,y));
-
-	auto beibao = MenuItemImage::create(
-		"beibao.png",
-		"beibao.png",
-		CC_CALLBACK_1(Main::onclickBagCallback, this,visibleSize,origin,layer));
-	beibao->setScale(visibleSize.width / 18 /beibao->getContentSize().width);
-	x = origin.x + visibleSize.width * 9/20;
-	y = origin.y + visibleSize.height / 12;
-	beibao->setPosition(Vec2(x, y));
-
-	auto setting = MenuItemImage::create(
-		"setting.png",
-		"setting.png",
-		CC_CALLBACK_1(Main::intoSettingsCallback, this));
-	setting->setScale(visibleSize.width / 18 / setting->getContentSize().width);
-	x = origin.x + visibleSize.width * 18 / 19;
-	y = origin.y + visibleSize.height * 11 / 12;
-	setting->setPosition(Vec2(x, y));
-
-	auto pet = MenuItemImage::create(
-		"chongwu.png",
-		"chongwu.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
-	pet->setScale(visibleSize.width / 18 / pet->getContentSize().width);
-	x = origin.x + visibleSize.width * 21 / 24;
-	y = origin.y + visibleSize.height*11 / 12;
-	pet->setPosition(Vec2(x, y));
-
-	auto shop = MenuItemImage::create(
-		"shop.png",
-		"shop.png",
-		CC_CALLBACK_1(Main::intoShopPageCallback, this));
-	shop->setScale(visibleSize.width / 18 / shop->getContentSize().width);
-	x = origin.x + visibleSize.width * 16 / 20;
-	y = origin.y + visibleSize.height * 11 / 12;
-	shop->setPosition(Vec2(x, y));
-
-    auto menu = Menu::create(learn,shuihu,huafei,beibao,shop,pet,setting, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
+	menuLayer(visibleSize,origin);
     auto background = Sprite::create("back.png");
     // position the sprite on the center of the screen
 	background->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
@@ -125,7 +55,7 @@ bool Main::init()
 	dog->setPosition(origin.x+visibleSize.width*0.9, origin.y+visibleSize.height*0.15);
 	addChild(dog,2);
 
-	CreateLayer(visibleSize, origin);
+	createUserInfoLayer(visibleSize, origin);
     return true;
 }
 
@@ -145,7 +75,7 @@ void Main::CreateBagLayer(Size visibleSize, Vec2 origin,Layer * layer) {
 	layer->addChild(Close, 11);
 }
 
-void Main::CreateLayer(Size visibleSize, Vec2 origin) {
+void Main::createUserInfoLayer(Size visibleSize, Vec2 origin) {
 	auto userInfo = Layer::create();
 	//头像
 	auto photo = Sprite::create("photo.png");
@@ -198,6 +128,80 @@ void Main::CreateLayer(Size visibleSize, Vec2 origin) {
 	userInfo->addChild(experience);
 
 	addChild(userInfo);
+}
+
+void Main::menuLayer(Size visibleSize, Vec2 origin)
+{
+	auto bagLayer = Layer::create();
+	this->addChild(bagLayer, 99);
+
+	auto learn = MenuItemImage::create(
+		"learn.png",
+		"learn.png",
+		CC_CALLBACK_1(Main::intoLearnPageCallback, this));
+	learn->setScale(visibleSize.width / 6 / learn->getContentSize().width);
+	float x = origin.x + visibleSize.width * 1 / 10;
+	float y = origin.y + visibleSize.height / 8;
+	learn->setPosition(Vec2(x, y));
+
+	auto shuihu = MenuItemImage::create(
+		"shuihu.png",
+		"shuihu.png",
+		CC_CALLBACK_1(Main::menuCloseCallback, this));
+	shuihu->setScale(visibleSize.width / 14 / shuihu->getContentSize().width);
+	shuihu->setAnchorPoint(Vec2(0.4, 0.5));
+	x = origin.x + visibleSize.width * 5 / 20;
+	y = origin.y + visibleSize.height / 12;
+	shuihu->setPosition(Vec2(x, y));
+
+	auto huafei = MenuItemImage::create(
+		"huafei.png",
+		"huafei.png",
+		CC_CALLBACK_1(Main::menuCloseCallback, this));
+	huafei->setScale(visibleSize.width / 18 / huafei->getContentSize().width);
+	x = origin.x + visibleSize.width * 7 / 20;
+	y = origin.y + visibleSize.height / 12;
+	huafei->setPosition(Vec2(x, y));
+
+	auto beibao = MenuItemImage::create(
+		"beibao.png",
+		"beibao.png",
+		CC_CALLBACK_1(Main::onclickBagCallback, this, visibleSize, origin, bagLayer));
+	beibao->setScale(visibleSize.width / 18 / beibao->getContentSize().width);
+	x = origin.x + visibleSize.width * 9 / 20;
+	y = origin.y + visibleSize.height / 12;
+	beibao->setPosition(Vec2(x, y));
+
+	auto setting = MenuItemImage::create(
+		"setting.png",
+		"setting.png",
+		CC_CALLBACK_1(Main::intoSettingsCallback, this));
+	setting->setScale(visibleSize.width / 18 / setting->getContentSize().width);
+	x = origin.x + visibleSize.width * 18 / 19;
+	y = origin.y + visibleSize.height * 11 / 12;
+	setting->setPosition(Vec2(x, y));
+
+	auto pet = MenuItemImage::create(
+		"chongwu.png",
+		"chongwu.png",
+		CC_CALLBACK_1(Main::menuCloseCallback, this));
+	pet->setScale(visibleSize.width / 18 / pet->getContentSize().width);
+	x = origin.x + visibleSize.width * 21 / 24;
+	y = origin.y + visibleSize.height * 11 / 12;
+	pet->setPosition(Vec2(x, y));
+
+	auto shop = MenuItemImage::create(
+		"shop.png",
+		"shop.png",
+		CC_CALLBACK_1(Main::intoShopPageCallback, this));
+	shop->setScale(visibleSize.width / 18 / shop->getContentSize().width);
+	x = origin.x + visibleSize.width * 16 / 20;
+	y = origin.y + visibleSize.height * 11 / 12;
+	shop->setPosition(Vec2(x, y));
+
+	auto menu = Menu::create(learn, shuihu, huafei, beibao, shop, pet, setting, NULL);
+	menu->setPosition(Vec2::ZERO);
+	this->addChild(menu, 1);
 }
 
 void Main::onclickBagCallback(cocos2d::Ref* pSender,Size visibleSize, Vec2 origin,Layer* layer) {

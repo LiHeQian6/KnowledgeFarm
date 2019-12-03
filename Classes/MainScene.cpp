@@ -123,52 +123,53 @@ bool Main::init()
 	addChild(dog,2);
 
 	auto userInfo = Layer::create();
+	//头像
 	auto photo = Sprite::create("photo.png");
 	photo->setScale(visibleSize.height * 1 / 8 / photo->getContentSize().height);
 	photo->setPosition(origin.x + visibleSize.width * 0.05, origin.y + visibleSize.height * 0.9);
 	userInfo->addChild(photo);
-
+	//昵称
 	auto nickName = Label::createWithTTF(u8"昵称 ", "fonts/font.ttf", 16);
 	nickName->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.92);
 	nickName->setAnchorPoint(Vec2(0, 0));
 	nickName->setColor(Color3B::BLACK);
 	userInfo->addChild(nickName);
-
+	//id
 	auto account = Label::createWithTTF(u8"id:15246546", "fonts/font.ttf", 10);
 	account->setColor(Color3B::BLACK);
 	account->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.83);
 	account->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(account);
-
+	//等级
 	auto lv = Label::createWithTTF("lv: 60", "fonts/font.ttf", 10);
 	lv->setColor(Color3B::BLACK);
 	lv->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.9);
 	lv->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(lv);
-
+	//金币
 	auto money = Label::createWithTTF(u8"金币:60 ", "fonts/font.ttf", 10);
 	money->setColor(Color3B::BLACK);
 	money->setPosition(origin.x + visibleSize.width * 0.17, origin.y + visibleSize.height * 0.9);
 	money->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(money);
-
+	//经验条框
 	auto progress = Sprite::create("progressempty.png");
-	progress->setPosition(Vec2(origin.x + visibleSize.width * 0.08, origin.y + visibleSize.height * 0.785));
+	progress->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.86);
 	progress->setAnchorPoint(Vec2(0, 0));
-	progress->setScale(visibleSize.width * 1 / 5 / progress->getContentSize().width);
+	progress->setScale(visibleSize.width * 1 / 8 / progress->getContentSize().width);
 	userInfo->addChild(progress);
-
+	//经验条
 	cocos2d::ui::LoadingBar* experienceBar = cocos2d::ui::LoadingBar::create("progressfull.png");
 	experienceBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
-	experienceBar->setPosition(Vec2(origin.x + visibleSize.width * 0.08, origin.y + visibleSize.height*0.785));
+	experienceBar->setPosition(Vec2(visibleSize.width * 0.1, origin.y + visibleSize.height * 0.86));
 	experienceBar->setAnchorPoint(Vec2(0,0));
-	experienceBar->setScale(visibleSize.width * 1 /5 / experienceBar->getContentSize().width);
-	experienceBar->setPercent(25);
+	experienceBar->setScale(origin.x + visibleSize.width * 1 /8 / experienceBar->getContentSize().width);
+	experienceBar->setPercent(100);
 	userInfo->addChild(experienceBar);
-
-	auto experience = Label::createWithTTF(u8"20/100 ", "fonts/font.ttf", 10);
-	experience->setColor(Color3B::WHITE);
-	experience->setPosition(origin.x + visibleSize.width * 0.1, origin.y + visibleSize.height * 0.785);
+	//经验值
+	auto experience = Label::createWithTTF(u8"20/100 ", "fonts/font.ttf", 8);
+	experience->setColor(Color3B::BLACK);
+	experience->setPosition(Vec2(origin.x + visibleSize.width * 0.14, origin.y + visibleSize.height * 0.865));
 	experience->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(experience);
 

@@ -86,8 +86,8 @@ void Shop::ShowFlower(Layer* layer1,TMXTiledMap* map,int count) {
 		auto flower = Sprite::create("meigui.png");
 		flower->setScale(visibleSize.height * 0.15 / flower->getContentSize().height);
 		flower->setAnchorPoint(Vec2(0, 0));
-		flower->setPosition(Vec2(orgin.x + map.at("x").asFloat()+ visibleSize.width/9, orgin.y + map.at("y").asFloat()+ visibleSize.height / 18+ visibleSize.height *0.25*(count-1)));
-		layer1->addChild(flower,2);
+		flower->setPosition(Vec2(orgin.x + map.at("x").asFloat()* visibleSize.width * 0.3 / flower->getContentSize().width+ visibleSize.height / 6, orgin.y + map.at("y").asFloat()*visibleSize.height * 0.15 / flower->getContentSize().height + visibleSize.height *0.07+ visibleSize.height *0.25*(count-1)));
+		layer1->addChild(flower,4);
 	}
 
 }

@@ -9,6 +9,7 @@ USING_NS_CC;
 #if defined(_MSC_VER) && (_MSC_VER >= 1900)
 #pragma execution_character_set("utf-8")
 #endif
+using namespace ui;
 
 
 Scene* Main::createScene()
@@ -35,6 +36,8 @@ bool Main::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	
+	auto layer = Layer::create();
+	this->addChild(layer, 99);
 
 	auto learn = MenuItemImage::create(
 		"learn.png",
@@ -67,7 +70,7 @@ bool Main::init()
 	auto beibao = MenuItemImage::create(
 		"beibao.png",
 		"beibao.png",
-		CC_CALLBACK_1(Main::menuCloseCallback, this));
+		CC_CALLBACK_1(Main::onclickBagCallback, this,visibleSize,origin,layer));
 	beibao->setScale(visibleSize.width / 18 /beibao->getContentSize().width);
 	x = origin.x + visibleSize.width * 9/20;
 	y = origin.y + visibleSize.height / 12;
@@ -122,6 +125,27 @@ bool Main::init()
 	dog->setPosition(origin.x+visibleSize.width*0.9, origin.y+visibleSize.height*0.15);
 	addChild(dog,2);
 
+	CreateLayer(visibleSize, origin);
+    return true;
+}
+
+void Main::CreateBagLayer(Size visibleSize, Vec2 origin,Layer * layer) {
+	auto BagMap = TMXTiledMap::create("bag.tmx");
+	auto Close = Button::create("close.png");
+	auto scale = visibleSize.height*0.94 / BagMap->getContentSize().height;
+	auto CloaseScale = visibleSize.height*0.25 / Close->getContentSize().height;
+	BagMap->setAnchorPoint(Vec2(0, 0));
+	BagMap->setScale(scale);
+	BagMap->setPosition(origin.x + visibleSize.width- BagMap->getContentSize().width * scale, origin.y+visibleSize.height*0.04);
+	Close->setAnchorPoint(Vec2(0, 0));
+	Close->setScale(CloaseScale);
+	Close->setPosition(Vec2(origin.x + visibleSize.width - BagMap->getContentSize().width * scale*1.055, origin.y + visibleSize.height * 0.42));
+	Close->addClickEventListener(CC_CALLBACK_1(Main::onclickCloseCallBack,this, layer));
+	layer->addChild(BagMap, 10);
+	layer->addChild(Close, 11);
+}
+
+void Main::CreateLayer(Size visibleSize, Vec2 origin) {
 	auto userInfo = Layer::create();
 	//头像
 	auto photo = Sprite::create("photo.png");
@@ -173,22 +197,28 @@ bool Main::init()
 	experience->setAnchorPoint(Vec2(0, 0));
 	userInfo->addChild(experience);
 
-
 	addChild(userInfo);
+}
 
-    return true;
+void Main::onclickBagCallback(cocos2d::Ref* pSender,Size visibleSize, Vec2 origin,Layer* layer) {
+	if(layer->getChildrenCount() == 0)
+		CreateBagLayer(visibleSize, origin,layer);
+}
+
+void Main::onclickCloseCallBack(Ref* pSender,Layer* layer) {
+	layer->removeAllChildren();
 }
 
 void Main::intoLearnPageCallback(Ref* pSender) {
-	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Learn::createScene()));
+	Director::getInstance()->pushScene(Learn::createScene());
 }
 
 void Main::intoShopPageCallback(Ref* pSender) {
-	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Shop::createScene()));
+	Director::getInstance()->pushScene(Shop::createScene());
 }
 
 void Main::intoSettingsCallback(cocos2d::Ref* pSender) {
-	Director::getInstance()->pushScene(TransitionMoveInL::create(0.3, Settings::createScene()));
+	Director::getInstance()->pushScene(Settings::createScene());
 }
 
 void Main::menuCloseCallback(Ref* pSender)

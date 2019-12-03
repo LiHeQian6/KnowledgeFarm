@@ -3,6 +3,8 @@
 #define __MAIN_SCENE_H__
 
 #include "cocos2d.h"
+#include "network/HttpClient.h"
+using namespace cocos2d::network;
 
 class Main : public cocos2d::Scene
 {
@@ -12,9 +14,15 @@ public:
     virtual bool init();
     
 	void createUserInfoLayer(cocos2d::Size visibleSize, cocos2d::Vec2 origin);
+
 	void menuLayer(cocos2d::Size visibleSize, cocos2d::Vec2 origin);
+
 	void CreateBagLayer(cocos2d::Size visibleSize, cocos2d::Vec2 origin,cocos2d::Layer* layer);
     // a selector callback
+	void sendHttpRequest();
+
+	void HttpRequestCallBack(HttpClient* sender,HttpResponse* response);
+
     void menuCloseCallback(cocos2d::Ref* pSender);
     
 	void onclickCloseCallBack(cocos2d::Ref* pSender,cocos2d::Layer* layer);
@@ -26,6 +34,10 @@ public:
 	void intoSettingsCallback(cocos2d::Ref* pSender);
 
 	void onclickBagCallback(cocos2d::Ref* pSender,cocos2d::Size size,cocos2d::Vec2 orign,cocos2d::Layer* layer);
+
+	void ShowFlowerInBag(cocos2d::TMXTiledMap* map,cocos2d::Layer* layer);
+
+	bool OnTouch(cocos2d::Touch* touch, cocos2d::Event* event,cocos2d::TMXTiledMap* map);
     // implement the "static create()" method manually
     CREATE_FUNC(Main);
 };

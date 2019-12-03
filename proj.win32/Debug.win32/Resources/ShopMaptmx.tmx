@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="6" height="1" tilewidth="273" tileheight="56" infinite="1" nextlayerid="17" nextobjectid="1037">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="6" height="1" tilewidth="273" tileheight="56" infinite="0" nextlayerid="17" nextobjectid="1037">
  <tileset firstgid="1" name="huojia1" tilewidth="319" tileheight="56" tilecount="1" columns="1">
   <image source="huojia1.png" width="319" height="56"/>
  </tileset>
@@ -9,25 +9,19 @@
  <tileset firstgid="3" name="huojia3" tilewidth="319" tileheight="56" tilecount="1" columns="1">
   <image source="huojia3.png" width="319" height="56"/>
  </tileset>
- <layer id="6" name="1" width="6" height="1" offsetx="-36.2644" offsety="0">
+ <layer id="6" name="1" width="6" height="1" locked="1" offsetx="-36.2644" offsety="0">
   <data encoding="base64" compression="zlib">
-   <chunk x="0" y="0" width="16" height="16">
-   eAFjZBgFoyEwGgIjNQQACAAAAg==
-  </chunk>
+   eAFjZMAOAAAwAAI=
   </data>
  </layer>
- <layer id="7" name="2" width="6" height="1">
+ <layer id="7" name="2" width="6" height="1" locked="1">
   <data encoding="base64" compression="zlib">
-   <chunk x="0" y="0" width="16" height="16">
-   eAFjYGBgYELDQO4oGA2B0RAYASEAACOwAAk=
-  </chunk>
+   eAFjYGBgYELDQC4DAACIAAk=
   </data>
  </layer>
- <layer id="8" name="3" width="6" height="1">
+ <layer id="8" name="3" width="6" height="1" locked="1">
   <data encoding="base64" compression="zlib">
-   <chunk x="0" y="0" width="16" height="16">
-   eAFjYMAEzJhCoyKjITAaAsMwBAAPxAAE
-  </chunk>
+   eAFjYMAEzEAhAAAkAAQ=
   </data>
  </layer>
  <objectgroup id="16" name="flower" locked="1">

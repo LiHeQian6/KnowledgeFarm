@@ -53,7 +53,7 @@ list(APPEND GAME_SOURCE
 	 Classes/Shop.cpp
 	 Classes/Learn.cpp
 	 Classes/Settings.cpp
-	 Classes/Math.cpp
+	 Classes/MathScene.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -61,7 +61,7 @@ list(APPEND GAME_HEADER
 	 Classes/Shop.h
 	 Classes/Learn.h
 	 Classes/Settings.h
-	 Classes/Math.h
+	 Classes/MathScene.h
      )
 
 if(ANDROID)

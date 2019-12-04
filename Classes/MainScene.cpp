@@ -144,24 +144,38 @@ void Main::menuLayer(Size visibleSize, Vec2 origin)
 	float y = origin.y + visibleSize.height / 8;
 	learn->setPosition(Vec2(x, y));
 
-	auto shuihu = MenuItemImage::create(
+	auto kettle = MenuItemImage::create(
 		"shuihu.png",
 		"shuihu.png",
 		CC_CALLBACK_1(Main::menuCloseCallback, this));
-	shuihu->setScale(visibleSize.width / 14 / shuihu->getContentSize().width);
-	shuihu->setAnchorPoint(Vec2(0.4, 0.5));
+	kettle->setScale(visibleSize.width / 14 / kettle->getContentSize().width);
+	kettle->setAnchorPoint(Vec2(0.4, 0.5));
 	x = origin.x + visibleSize.width * 5 / 20;
 	y = origin.y + visibleSize.height / 12;
-	shuihu->setPosition(Vec2(x, y));
+	kettle->setPosition(Vec2(x, y));
+	//水壶角标
+	auto kettleNum = Label::createWithTTF("16", "fonts/font.ttf",5);
+	kettleNum->setAnchorPoint(Vec2(0,1));
+	kettleNum->setTextColor(Color4B::BLACK);
+	kettleNum->setPosition(Vec2(kettle->getContentSize().width*2/3, kettle->getContentSize().height*1.2));
+	kettle->addChild(kettleNum,5);
 
-	auto huafei = MenuItemImage::create(
+
+	auto fertilizer = MenuItemImage::create(
 		"huafei.png",
 		"huafei.png",
 		CC_CALLBACK_1(Main::menuCloseCallback, this));
-	huafei->setScale(visibleSize.width / 18 / huafei->getContentSize().width);
+	fertilizer->setScale(visibleSize.width / 18 / fertilizer->getContentSize().width);
 	x = origin.x + visibleSize.width * 7 / 20;
 	y = origin.y + visibleSize.height / 12;
-	huafei->setPosition(Vec2(x, y));
+	fertilizer->setPosition(Vec2(x, y));
+	//化肥角标
+	auto fertilizerNum = Label::createWithTTF("16", "fonts/font.ttf", 6);
+	fertilizerNum->setAnchorPoint(Vec2(0, 1));
+	fertilizerNum->setTextColor(Color4B::BLACK);
+	fertilizerNum->setPosition(Vec2(fertilizer->getContentSize().width * 2 / 3, fertilizer->getContentSize().height*1.1));
+	fertilizer->addChild(fertilizerNum, 5);
+
 
 	auto beibao = MenuItemImage::create(
 		"beibao.png",
@@ -199,7 +213,7 @@ void Main::menuLayer(Size visibleSize, Vec2 origin)
 	y = origin.y + visibleSize.height * 11 / 12;
 	shop->setPosition(Vec2(x, y));
 
-	auto menu = Menu::create(learn, shuihu, huafei, beibao, shop, pet, setting, NULL);
+	auto menu = Menu::create(learn, kettle, fertilizer, beibao, shop, pet, setting, NULL);
 	menu->setPosition(Vec2::ZERO);
 	this->addChild(menu, 1);
 }

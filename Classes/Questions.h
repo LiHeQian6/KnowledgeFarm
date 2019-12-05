@@ -18,8 +18,8 @@ public:
 		this->signal2 = signal2;
 		this->result = result;
 	};
-	std::string getQuestions();
-	int getAnswers();
+	std::string getQuestion();
+	int getAnswer();
 };
 
 #endif 

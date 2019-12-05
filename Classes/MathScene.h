@@ -14,7 +14,7 @@ public:
 	void getQuestions();
 	void onClickJiantouCallBack(cocos2d::Ref* english);
 	// implement the "static create()" method manually
-	void setQuestion(std::string str);
+	void showQuestion(std::string str);
 	void HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response);
 	CREATE_FUNC(MathScene);
 };

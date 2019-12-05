@@ -35,7 +35,6 @@ bool MathScene::init() {
 	goBack->setAnchorPoint(Vec2(0, 0));
 	goBack->setScale(visibleSize.width * 0.1 / goBack->getContentSize().width);
 	goBack->setPosition(Vec2(orgin.x + visibleSize.width * 0.03, orgin.y + visibleSize.height * 0.80));
-
 	auto menu = Menu::create(goBack,NULL);
 	menu->setPosition(Vec2::ZERO);
 	addChild(menu,10);
@@ -51,29 +50,12 @@ void MathScene::getQuestions() {
 		// 设置网络请求的一个对象（开始整理一个请求）
 	auto* request = new cocos2d::network::HttpRequest;
 	// 给对象设置url地址
-	request->setUrl("http://10.7.87.222:8080/FarmKnowledge/answer/OneUpMath"); // 必须把http://协议写上，但是cocos不支持http，这里需要改设置，下面会详细说
+	request->setUrl("http://10.7.87.220:8080/FarmKnowledge/answer/OneUpMath"); // 必须把http://协议写上，但是cocos不支持http，这里需要改设置，下面会详细说
 	// 设置网络请求类型，get仅仅得到数据，post是发送表单数据
 	request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
 	// 第一个参数为网络请求的对象, 第二个参数为网络请求的回执，被打包成HttpResponse类型
 	request->setResponseCallback(CC_CALLBACK_2(MathScene::HttpRequestCompleted,this));
 	cocos2d::network::HttpClient::getInstance()->send(request);
-}
-std::string Questions::getQuestions() {
-	std::string str = std::to_string(num1) + signal1 + std::to_string(num2);
-	if (signal2!="") {
-		str = str + signal2 + std::to_string(num3);
-	}
-	str += "=";
-	return str;
-}
-int Questions::getAnswers() {
-	return result;
-}
-void MathScene::setQuestion(std::string str) {
-	auto q = Label::createWithTTF(str, "fonts/font.ttf", 10);
-	q->setPosition(Director::getInstance()->getVisibleSize().width/2, Director::getInstance()->getVisibleSize().height/2);
-	this->addChild(q,10);
-
 }
 void MathScene::HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response) {
 	// 网络请求是否正常返回数据
@@ -96,6 +78,23 @@ void MathScene::HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos
 			questions.push_back(q);
 		};
 	}
-	std::string str = questions.at(0).getQuestions();
-	setQuestion(str);
+	std::string str = questions.at(0).getQuestion();
+	showQuestion(str);
+}
+void MathScene::showQuestion(std::string str) {
+	auto q = Label::createWithTTF(str, "fonts/font.ttf", 10);
+	q->setPosition(Director::getInstance()->getVisibleSize().width/2, Director::getInstance()->getVisibleSize().height/2);
+	this->addChild(q,10);
+
+}
+std::string Questions::getQuestion() {
+	std::string str = std::to_string(num1) + signal1 + std::to_string(num2);
+	if (signal2!="") {
+		str = str + signal2 + std::to_string(num3);
+	}
+	str += "=";
+	return str;
+}
+int Questions::getAnswer() {
+	return result;
 }

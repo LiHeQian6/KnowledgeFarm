@@ -10,12 +10,14 @@ class MathScene : public cocos2d::Scene
 {
 public:
 	static cocos2d::Scene* createScene();
-
+	int i=0;//当前是第几道题
+	std::vector<Questions> q;//题目列表
 	virtual bool init();
 	void getQuestions();
 	void onClickJiantouCallBack(cocos2d::Ref* english);
 	// implement the "static create()" method manually
-	void showQuestion(std::vector<Questions> q);
+	void showQuestion();
+	void nextQuestion();
 	void HttpRequestCompleted(network::HttpClient* sender, network::HttpResponse* response);
 	CREATE_FUNC(MathScene);
 };

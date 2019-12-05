@@ -62,6 +62,9 @@ list(APPEND GAME_HEADER
 	 Classes/Learn.h
 	 Classes/Settings.h
 	 Classes/MathScene.h
+	 Classes/Questions.h
+	 Classes/ShopItem.h
+	 Classes/BagItem.h
      )
 
 if(ANDROID)

@@ -27,9 +27,6 @@ bool Learn::init() {
 	layer->setAnchorPoint(Vec2::ZERO);
 	addChild(layer, 1);
 
-	auto layer1 = Layer::create();
-	//addChild(layer1, 2);
-
 	auto learnBack = Sprite::create("learnBack.png");
 	learnBack->setAnchorPoint(Vec2::ZERO);
 	learnBack->setScaleX(visibleSize.width / learnBack->getContentSize().width);
@@ -41,20 +38,17 @@ bool Learn::init() {
 	auto mathImage = MenuItemImage::create("math.png", "math.png", CC_CALLBACK_1(Learn::onClickMathCallBack, this));
 	mathImage->setAnchorPoint(Vec2(0, 0));
 	mathImage->setScale(visibleSize.width * 0.1 / mathImage->getContentSize().width);
-	mathImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.6) / 2, (orgin.y + visibleSize.height ) / 2));
-	//layer1->addChild(mathImage, 1);
+	mathImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.6/ 2) , (orgin.y + visibleSize.height*2 / 5 )));
 
 	auto chineseImage = MenuItemImage::create("chinese.png", "chinese.png", CC_CALLBACK_1(Learn::onClickChineseCallBack, this));
 	chineseImage->setAnchorPoint(Vec2(0, 0));
 	chineseImage->setScale(visibleSize.width * 0.1 / chineseImage->getContentSize().width);
-	chineseImage->setPosition(Vec2((orgin.x + visibleSize.width * 1.245) / 2, (orgin.y + visibleSize.height) / 2));
-	//layer1->addChild(chineseImage, 3);
+	chineseImage->setPosition(Vec2((orgin.x + visibleSize.width * 1.245) / 2, (orgin.y + visibleSize.height * 2 / 5)));
 
-	auto englishImage = MenuItemImage::create("english.png", "chinese.png", CC_CALLBACK_1(Learn::onClickEnglishCallBack, this));
+	auto englishImage = MenuItemImage::create("english.png", "english.png", CC_CALLBACK_1(Learn::onClickEnglishCallBack, this));
 	englishImage->setAnchorPoint(Vec2::ZERO);
 	englishImage->setScale(visibleSize.width * 0.1 / englishImage->getContentSize().width);
-	englishImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.92) / 2, (orgin.y + visibleSize.height) / 2));
-	//layer1->addChild(englishImage, 2);
+	englishImage->setPosition(Vec2((orgin.x + visibleSize.width * 0.92) / 2, (orgin.y + visibleSize.height * 2 / 5)));
 
 	auto jiantou = MenuItemImage::create("jiantou.png", "jiantou.png", CC_CALLBACK_1(Learn::onClickJiantouCallBack, this));
 	jiantou->setAnchorPoint(Vec2(0, 0));
@@ -64,7 +58,6 @@ bool Learn::init() {
 	auto menu = Menu::create(jiantou, mathImage, chineseImage, englishImage, NULL);
 	menu->setPosition(Vec2::ZERO);
 	addChild(menu,2);
-	//layer1->addChild(menu, 2);
 
 	return true;
 }

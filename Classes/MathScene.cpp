@@ -1,14 +1,21 @@
 #include "SimpleAudioEngine.h"
 #include "AppDelegate.h"
 #include "MathScene.h"
-#include "cocos2d/cocos/network/HttpRequest.h"
-#include "cocos2d/cocos/network/HttpClient.h"
-#include "cocos2d/cocos/network/HttpResponse.h"
+#include "network/HttpRequest.h"
+#include "network/HttpClient.h"
+#include "network/HttpResponse.h"
 #include "json/rapidjson.h"
 #include "json/document.h"
 #include "Questions.h"
+#include "ui/CocosGUI.h"
 #include <iostream>
+#include "extensions\cocos-ext.h"
 USING_NS_CC;
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1900)
+#pragma execution_character_set("utf-8")
+#endif
+#include <cocos\ui\UIScale9Sprite.cpp>
 
 Scene* MathScene::createScene() {
 	return MathScene::create();
@@ -24,7 +31,7 @@ bool MathScene::init() {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 orgin = Director::getInstance()->getVisibleOrigin();
 
-	auto backGround = Sprite::create("background.png");
+	auto backGround = Sprite::create("mathbg.png");
 	backGround->setAnchorPoint(Vec2::ZERO);
 	backGround->setScaleX(visibleSize.width / backGround->getContentSize().width);
 	backGround->setScaleY(visibleSize.height / backGround->getContentSize().height);
@@ -33,8 +40,8 @@ bool MathScene::init() {
 
 	auto goBack = MenuItemImage::create("jiantou.png", "jiantou.png", CC_CALLBACK_1(MathScene::onClickJiantouCallBack, this));
 	goBack->setAnchorPoint(Vec2(0, 0));
-	goBack->setScale(visibleSize.width * 0.1 / goBack->getContentSize().width);
-	goBack->setPosition(Vec2(orgin.x + visibleSize.width * 0.03, orgin.y + visibleSize.height * 0.80));
+	goBack->setScale(visibleSize.width * 0.06 / goBack->getContentSize().width);
+	goBack->setPosition(Vec2(orgin.x + visibleSize.width * 0.03, orgin.y + visibleSize.height * 0.90));
 	auto menu = Menu::create(goBack,NULL);
 	menu->setPosition(Vec2::ZERO);
 	addChild(menu,10);
@@ -50,7 +57,7 @@ void MathScene::getQuestions() {
 		// 设置网络请求的一个对象（开始整理一个请求）
 	auto* request = new cocos2d::network::HttpRequest;
 	// 给对象设置url地址
-	request->setUrl("http://10.7.87.220:8080/FarmKnowledge/answer/OneUpMath"); // 必须把http://协议写上，但是cocos不支持http，这里需要改设置，下面会详细说
+	request->setUrl("http://10.7.87.222:8080/FarmKnowledge/answer/OneUpMath"); // 必须把http://协议写上，但是cocos不支持http，这里需要改设置，下面会详细说
 	// 设置网络请求类型，get仅仅得到数据，post是发送表单数据
 	request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
 	// 第一个参数为网络请求的对象, 第二个参数为网络请求的回执，被打包成HttpResponse类型
@@ -67,25 +74,40 @@ void MathScene::HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos
 	rapidjson::Document document;
 	document.Parse<0>(str_json.c_str());
 	if (document.HasParseError()) { //打印解析错误
-		CCLOG("GetParseError %s\n", document.GetParseError());
+		CCLOG("GetParseError %u\n", document.GetParseError());
 	}
 	if (document.IsArray()) {
 		auto doc = document.GetArray();
 		for (int i = 0; i<doc.Size(); i++)
 		{
 			Questions q(doc[i]["num1"].GetInt(), doc[i]["signal1"].GetString(), doc[i]["num2"].GetInt(), doc[i]["signal2"].GetString(), doc[i]["num3"].GetInt(), doc[i]["result"].GetInt());
-			
 			questions.push_back(q);
 		};
 	}
-	std::string str = questions.at(0).getQuestion();
-	showQuestion(str);
+	showQuestion(questions);
 }
-void MathScene::showQuestion(std::string str) {
-	auto q = Label::createWithTTF(str, "fonts/font.ttf", 10);
-	q->setPosition(Director::getInstance()->getVisibleSize().width/2, Director::getInstance()->getVisibleSize().height/2);
-	this->addChild(q,10);
+void MathScene::showQuestion(std::vector<Questions> q) {
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 orgin = Director::getInstance()->getVisibleOrigin();
+	auto text = Label::createWithTTF(q.at(0).getQuestion(), "fonts/font.ttf", 50);
+	auto textField = cocos2d::extension::EditBox::create(Size(200, 35), Scale9Sprite::create("editbox.png"));
+	text->setPosition(orgin.x + visibleSize.width*4/7,orgin.y + visibleSize.height*3/5);
+	text->setAnchorPoint(Vec2(1,0.5));
+	textField->setPosition(Vec2(orgin.x + visibleSize.width *4/7, orgin.y + visibleSize.height*3 /5));
+	textField->setAnchorPoint(Vec2(0,0.5));
+	textField->setFont("fonts/font.ttf",50);
+	textField->setContentSize(Size(80,50));
+	textField->setMaxLength(3);
+	textField->setInputMode(EditBox::InputMode::DECIMAL);
+	this->addChild(text,10);
+	this->addChild(textField,15); 
 
+	auto next = Button::create();
+	next->setTitleLabel(Label::createWithTTF("NEXT","fonts/font.ttf", 30));
+	next->setPosition(Vec2(orgin.x + visibleSize.width*2/3, orgin.y + visibleSize.height *2/ 5));
+	next->setTitleFontName("fonts/font.ttf");
+	this->addChild(next);
+	//next->addClickEventListener();
 }
 std::string Questions::getQuestion() {
 	std::string str = std::to_string(num1) + signal1 + std::to_string(num2);

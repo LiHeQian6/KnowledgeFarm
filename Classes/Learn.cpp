@@ -52,8 +52,8 @@ bool Learn::init() {
 
 	auto jiantou = MenuItemImage::create("jiantou.png", "jiantou.png", CC_CALLBACK_1(Learn::onClickJiantouCallBack, this));
 	jiantou->setAnchorPoint(Vec2(0, 0));
-	jiantou->setScale(visibleSize.width * 0.1 / jiantou->getContentSize().width);
-	jiantou->setPosition(Vec2(orgin.x + visibleSize.width * 0.03, orgin.y + visibleSize.height * 0.80));
+	jiantou->setScale(visibleSize.width * 0.06 / jiantou->getContentSize().width);
+	jiantou->setPosition(Vec2(orgin.x + visibleSize.width * 0.03, orgin.y + visibleSize.height * 0.90));
 
 	auto menu = Menu::create(jiantou, mathImage, chineseImage, englishImage, NULL);
 	menu->setPosition(Vec2::ZERO);

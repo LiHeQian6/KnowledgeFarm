@@ -335,8 +335,6 @@ void Main::intoShopPageCallback(Ref* pSender) {
 void Main::intoSettingsCallback(cocos2d::Ref* pSender) {
 	Director::getInstance()->pushScene(Settings::createScene());
 }
-
-void Main::menuCloseCallback(Ref* pSender)
-{
-
+void Main::menuCloseCallback(cocos2d::Ref* pSender) {
+	
 }

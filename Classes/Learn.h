@@ -1,7 +1,6 @@
 #ifndef _Learn_
 #define _Learn_
 
-#pragma once
 #include "cocos2d.h"
 
 class Learn : public cocos2d::Scene{

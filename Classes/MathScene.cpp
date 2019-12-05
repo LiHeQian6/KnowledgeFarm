@@ -67,7 +67,6 @@ void MathScene::getQuestions() {
 void MathScene::HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response) {
 	// 网络请求是否正常返回数据
 	if (!response->isSucceed()) return;
-	std::vector<Questions> questions;
 	std::vector <char>* vec = response->getResponseData();
 	std::string str_json(vec->begin(), vec->end());
 	CCLOG("%s\n", str_json.c_str());
@@ -81,16 +80,18 @@ void MathScene::HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos
 		for (int i = 0; i<doc.Size(); i++)
 		{
 			Questions q(doc[i]["num1"].GetInt(), doc[i]["signal1"].GetString(), doc[i]["num2"].GetInt(), doc[i]["signal2"].GetString(), doc[i]["num3"].GetInt(), doc[i]["result"].GetInt());
-			questions.push_back(q);
+			MathScene::q.push_back(q);
 		};
 	}
-	showQuestion(questions);
+	showQuestion();
 }
-void MathScene::showQuestion(std::vector<Questions> q) {
+void MathScene::showQuestion() {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 orgin = Director::getInstance()->getVisibleOrigin();
-	auto text = Label::createWithTTF(q.at(0).getQuestion(), "fonts/font.ttf", 50);
+	auto text = Label::createWithTTF(q.at(i).getQuestion(), "fonts/font.ttf", 50);
+	text->setTag(1);
 	auto textField = cocos2d::extension::EditBox::create(Size(200, 35), Scale9Sprite::create("editbox.png"));
+	textField->setTag(2);
 	text->setPosition(orgin.x + visibleSize.width*4/7,orgin.y + visibleSize.height*3/5);
 	text->setAnchorPoint(Vec2(1,0.5));
 	textField->setPosition(Vec2(orgin.x + visibleSize.width *4/7, orgin.y + visibleSize.height*3 /5));
@@ -107,7 +108,16 @@ void MathScene::showQuestion(std::vector<Questions> q) {
 	next->setPosition(Vec2(orgin.x + visibleSize.width*2/3, orgin.y + visibleSize.height *2/ 5));
 	next->setTitleFontName("fonts/font.ttf");
 	this->addChild(next);
-	//next->addClickEventListener();
+	next->addClickEventListener(CC_CALLBACK_0(MathScene::nextQuestion,this));
+}
+void MathScene::nextQuestion() {
+
+	Label* text=(Label*)getChildByTag(1);
+	if (i != q.size())
+		i++;
+	else
+		getQuestions();
+	text->setString(q.at(i).getQuestion());
 }
 std::string Questions::getQuestion() {
 	std::string str = std::to_string(num1) + signal1 + std::to_string(num2);

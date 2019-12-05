@@ -53,7 +53,8 @@ bool Main::init()
 	map->setAnchorPoint(Vec2(0.45,0.5));
 	map->setScale(visibleSize.height *0.38/ map->getContentSize().height);
 	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7); 
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, this);
+	//_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, this);
+	addChild(map,1);
 	auto dog = Sprite::create("dog.png");
 	dog->setScale(visibleSize.height * 1 / 5 / dog->getContentSize().height);
 	dog->setPosition(origin.x+visibleSize.width*0.9, origin.y+visibleSize.height*0.15);

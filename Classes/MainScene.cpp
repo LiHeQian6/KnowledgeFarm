@@ -5,11 +5,13 @@
 #include "Shop.h"
 #include "Settings.h"
 #include "network/HttpClient.h"
+#include "Math.h"
 USING_NS_CC;
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1900)
 #pragma execution_character_set("utf-8")
 #endif
+#include <cocos\editor-support\spine\extension.h>
 using namespace ui;
 using namespace cocos2d::network;
 using namespace std;
@@ -50,16 +52,12 @@ bool Main::init()
 	auto map = TMXTiledMap::create("land.tmx");
 	map->setAnchorPoint(Vec2(0.45,0.5));
 	map->setScale(visibleSize.height *0.38/ map->getContentSize().height);
-	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7);
-	addChild(map,1);
-	auto touch = EventListenerTouchOneByOne::create();
-	touch->onTouchBegan = CC_CALLBACK_2(Main::OnTouch,this,map);
+	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7); 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, this);
 	auto dog = Sprite::create("dog.png");
 	dog->setScale(visibleSize.height * 1 / 5 / dog->getContentSize().height);
 	dog->setPosition(origin.x+visibleSize.width*0.9, origin.y+visibleSize.height*0.15);
 	addChild(dog,2);
-
 	createUserInfoLayer(visibleSize, origin);
     return true;
 }
@@ -106,21 +104,67 @@ bool Main::init()
 //}
 
 bool Main::OnTouch(Touch* touch, Event* event,TMXTiledMap* map) {
-	//Size visiblesize = Director::sharedDirector()->getVisibleSize();
+	Size visiblesize = Director::sharedDirector()->getVisibleSize();
 	//// 获取点击的openGL坐标
-	//auto touchPos = touch->getLocation();
+	auto touchPos = touch->getLocation();
 	//CCLOG("TOUCH");
-	//TMXLayer* layer1 = map->getLayer("map1");
+	TMXLayer* layer1 = map->getLayer("map1");
 	////cocos是默认用opengl 坐标（左下角开始） tmx 用的是格子坐标(左上角开始) 这里做转换(重点)
 	//Size mapSize = map->getMapSize();//获取地图总大小
 	//Size tileSize = map->getTileSize();//获取格子大小
 	//auto size = tileSize.width * visiblesize.height * 0.38 / map->getContentSize().height;
-	//int x = (touchPos.x) / (tileSize.width* visiblesize.height * 0.38 / map->getContentSize().height);//格子坐标x
+	//int x = (touchPos.x-visiblesize.width*0.4) / (tileSize.width / 1.2);//格子坐标x
 	////int y = (mapSize.height * tileSize.height - touchPos.y) / tileSize.height;//格子坐标y
 	//int y = (visiblesize.height - touchPos.y) / tileSize.height * visiblesize.height * 0.38 / map->getContentSize().height;
 	//// 计算当前缩放下，每块瓦片的长宽
-	//layer1->setTileGID(0, Vec2(x, y));//设置为0就置空了
-	//log("%d  %d", x, y);
+
+	/*CCTMXTiledMap* map = (CCTMXTiledMap*)getChildByTag();*/
+	//int tilewidth = map->getTileSize().width * visiblesize.height * 0.38 / map->getContentSize().height / 1.2;
+	//int tilehigh = map->getTileSize().height * visiblesize.height * 0.38 / map->getContentSize().height / 1.2;
+	auto a = map->getPosition().x;
+	auto b = touchPos.x;
+	auto my = map->getPosition().y;
+	auto py = touchPos.y;
+	//float mapOrginX = (map->getContentSize().width / 2) *visiblesize.height * 0.38 / map->getContentSize().height- visiblesize.width * 2 / 5;
+	//float mapOrginy = visiblesize.height * 3 / 7 - (map->getContentSize().height / 2)* visiblesize.height * 0.38 / map->getContentSize().height;
+	////O为地图的原点，A是要求的点，oa向量的值  
+	//float OA_x = touchPos.x - mapOrginX;
+	//float OA_y = touchPos.y - mapOrginy;
+	////假设以地图的原点为初始坐标（正上方那个点），对应的所示点的坐标值为m,n  
+	////将地图坐标(m,n)转为标准坐标，则有：  
+	////(x,y)-(mapOrginX,mapOrginy)=m(tilewidth/2,-tilehigh/2)+n(-tilewidth/2,-tilehigh/2)  
+	////因此m=(OA_x/(tilewidth/2)+OA_y/(-tilehigh/2)/2=OA_x/tilewidth-OA_y/tilehigh  
+	////n=(OA_y/(-tilehigh/2)-OA_x/(tilewidth/2))/2=-(OA_y/tilehigh+OA_x/tilewidth)  
+	//float m = OA_x / tilewidth;
+	//float n = OA_y / tilehigh;
+	//if (m < 0) m = 0;
+	//if (n < 0) n = 0;
+	//if (m > map->getMapSize().width - 1) m = map->getMapSize().width - 1;
+	//if (n > map->getMapSize().height - 1) n = map->getMapSize().height - 1;
+	//layer1->setTileGID(0, Vec2((int)m, (int)n));//设置为0就置空了
+	//log("%d  %d", (int)m, (int)n);
+	//log("%f  %f", a, b);
+	log("%f  %f", a, my);
+	Point react = ccp(map->getPosition().x, map->getPosition().y);
+	CCPoint pos = ccpSub(touchPos, react);
+	log("%f  %f", react.x, react.y);
+	float halfMapWidth = map->getMapSize().width * 0.5f;
+	float mapHeight = map->getMapSize().height;
+	float tileWidth = map->getTileSize().width;
+	float tileHeight = map->getTileSize().height;
+
+	CCPoint tilePasDiv = ccp(pos.x / tileWidth, pos.y / tileHeight);
+	float inverseTileY = mapHeight - tilePasDiv.y;
+	float posX = (int)(inverseTileY + tilePasDiv.x - halfMapWidth);
+	float posY = (int)(inverseTileY - tilePasDiv.x + halfMapWidth);
+
+	posX = MAX(0, posX);
+	posX = MIN(map->getMapSize().width - 1, posX);
+	posY = MAX(0, posY);
+	posY = MIN(map->getMapSize().height - 1, posY);
+	 
+	//getPositionForStaggeredAt(pos);
+	layer1->setTileGID(0, Vec2(posX, posY));
 	return true;
 }
 

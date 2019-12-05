@@ -4,6 +4,7 @@
 
 #include "cocos2d.h"
 #include "network/HttpClient.h"
+#include "ShopItem.h"
 using namespace cocos2d::network;
 
 class Main : public cocos2d::Scene
@@ -38,6 +39,15 @@ public:
 	void ShowFlowerInBag(cocos2d::TMXTiledMap* map,cocos2d::Layer* layer);
 
 	bool OnTouch(cocos2d::Touch* touch, cocos2d::Event* event,cocos2d::TMXTiledMap* map);
+
+	void getShopItem();
+
+	void RequesetCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response);
+
+	void getFlowerImage(std::vector<ShopItem> shopItem);
+
+	void getFlowerImageCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response, std::string name);
+
     // implement the "static create()" method manually
     CREATE_FUNC(Main);
 };

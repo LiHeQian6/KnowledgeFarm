@@ -4,7 +4,12 @@
 #include "Learn.h"
 #include "Shop.h"
 #include "Settings.h"
+#include "network/HttpRequest.h"
 #include "network/HttpClient.h"
+#include "network/HttpResponse.h"
+#include "json/rapidjson.h"
+#include "json/document.h"
+#include "ShopItem.h"
 #include "Math.h"
 USING_NS_CC;
 
@@ -16,6 +21,7 @@ using namespace ui;
 using namespace cocos2d::network;
 using namespace std;
 
+std::vector<ShopItem> shopItem1;
 
 Scene* Main::createScene()
 {
@@ -41,6 +47,8 @@ bool Main::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	getShopItem();
+
 	menuLayer(visibleSize,origin);
     auto background = Sprite::create("back.png");
     // position the sprite on the center of the screen
@@ -50,10 +58,17 @@ bool Main::init()
     this->addChild(background, 0);
 
 	auto map = TMXTiledMap::create("land.tmx");
-	map->setAnchorPoint(Vec2(0.45,0.5));
+	//map->setAnchorPoint(Vec2(0.45,0.5));
 	map->setScale(visibleSize.height *0.38/ map->getContentSize().height);
 	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7); 
+	map->setAnchorPoint(Vec2(0.5,0.5));
+	//map->setPosition(Vec2(origin.x, origin.y));
+	map->setColor(Color3B::BLUE);
+	auto aa = Label::createWithTTF(u8"昵称 ", "fonts/font.ttf", 16);
+	//aa->convertToWorldSpace();
+	map->addChild(aa,52);
 	//_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, this);
+
 	addChild(map,1);
 	auto dog = Sprite::create("dog.png");
 	dog->setScale(visibleSize.height * 1 / 5 / dog->getContentSize().height);
@@ -63,46 +78,6 @@ bool Main::init()
     return true;
 }
 
-//void Main::sendHttpRequest() {
-//	auto request = new HttpRequest();
-//	string str = "你好！";
-//	string info = string_To_UTF8(str);
-//	request->setUrl("http://10.7.87.219:8080/COCOTest/TestServlet?info=123");
-//	request->setRequestType(HttpRequest::Type::GET);
-//	request->setResponseCallback(CC_CALLBACK_2(Main::HttpRequestCallBack, this));
-//	HttpClient::getInstance()->sendImmediate(request);
-//	request->release();
-//}
-
-
-// string Main::string_To_UTF8(const std::string& str)
-//{
-//	int nwLen = ::MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, NULL, 0);
-//	wchar_t* pwBuf = new wchar_t[nwLen + 1];//一定要加1，不然会出现尾巴 
-//	ZeroMemory(pwBuf, nwLen * 2 + 2);
-//	::MultiByteToWideChar(CP_ACP, 0, str.c_str(), str.length(), pwBuf, nwLen);
-//	int nLen = ::WideCharToMultiByte(CP_UTF8, 0, pwBuf, -1, NULL, NULL, NULL, NULL);
-//	char* pBuf = new char[nLen + 1];
-//	ZeroMemory(pBuf, nLen + 1);
-//	::WideCharToMultiByte(CP_UTF8, 0, pwBuf, nwLen, pBuf, nLen, NULL, NULL);
-//	std::string retStr(pBuf);
-//	delete[]pwBuf;
-//	delete[]pBuf;
-//	pwBuf = NULL;
-//	pBuf = NULL;
-//	return retStr;
-//}
-//
-//void Main::HttpRequestCallBack(HttpClient* client, HttpResponse* response) {
-//	if (!response) {
-//		return;
-//	}
-//	auto info = response->getResponseData();
-//	for (unsigned int i = 0; i < info->size(); i++)
-//	{
-//		log("% c", (*info)[i]);
-//	}
-//}
 
 bool Main::OnTouch(Touch* touch, Event* event,TMXTiledMap* map) {
 	Size visiblesize = Director::sharedDirector()->getVisibleSize();
@@ -382,4 +357,69 @@ void Main::intoSettingsCallback(cocos2d::Ref* pSender) {
 }
 void Main::menuCloseCallback(cocos2d::Ref* pSender) {
 	
+}
+
+void Main::getShopItem() {
+	auto* request = new cocos2d::network::HttpRequest();
+	request->setUrl("http://10.7.87.222:8080/FarmKnowledge/crop/initCrop");
+	request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
+	request->setResponseCallback(CC_CALLBACK_2(Main::RequesetCallBack, this));
+	cocos2d::network::HttpClient::getInstance()->send(request);
+	request->release();
+}
+
+void Main::RequesetCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response) {
+	if (!response->isSucceed()) {
+		return;
+	}
+	std::vector<char>* vec = response->getResponseData();
+	std::string str_json(vec->begin(), vec->end());
+	CCLOG("%s\n", str_json.c_str());
+	rapidjson::Document document;
+	document.Parse<0>(str_json.c_str());
+	if (document.HasParseError()) {
+		CCLOG("GetParseError %s\n", document.GetParseError());
+	}
+	if (document.IsArray()) {
+		auto doc = document.GetArray();
+		for (int i = 0; i < doc.Size(); ++i) {
+			ShopItem item(
+				doc[i]["exist"].GetInt(),
+				doc[i]["img3"].GetString(),
+				doc[i]["matureTime"].GetInt(),
+				doc[i]["price"].GetInt(),
+				doc[i]["name"].GetString(),
+				doc[i]["id"].GetInt(),
+				doc[i]["experience"].GetInt(),
+				doc[i]["value"].GetInt(),
+				doc[i]["img2"].GetString(),
+				doc[i]["img1"].GetString());
+			shopItem1.push_back(item);
+		}
+		getFlowerImage(shopItem1);
+	}
+}
+
+void Main::getFlowerImage(std::vector<ShopItem> shopItem) {
+	auto request = new cocos2d::network::HttpRequest();
+	for (int i = 0; i < shopItem.size(); ++i) {
+		request->setUrl(shopItem[0].getImage1());
+		request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
+		request->setResponseCallback(CC_CALLBACK_2(Main::getFlowerImageCallBack, this, shopItem[i].getName()));
+		cocos2d::network::HttpClient::getInstance()->send(request);
+	}
+	request->release();
+}
+
+void Main::getFlowerImageCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response, std::string name) {
+	if (!response->isSucceed())
+		return;
+	vector<char>* buffer = response->getResponseData();
+	CCImage* img = new CCImage;
+	img->initWithImageData((unsigned char*)buffer->data(), buffer->size());
+	CCTexture2D* texture = new CCTexture2D();
+	if (texture->initWithImage(img)) {
+		Director::getInstance()->getTextureCache()->addImage(img, name);
+	}
+	img->release();
 }

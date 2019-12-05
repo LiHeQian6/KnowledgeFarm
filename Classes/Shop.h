@@ -6,6 +6,7 @@
 #include "network/HttpClient.h"
 #include "network/HttpResponse.h"
 #include "json/rapidjson.h"
+#include "json/document.h"
 #include "ShopItem.h"
 
 class Shop : public cocos2d::Scene
@@ -18,13 +19,13 @@ public:
 	// a selector callback
 	void menuJiantouCallback(cocos2d::Ref* pSender);
 
-	void getShopItem(cocos2d::Layer* layer, cocos2d::TMXTiledMap* map);
+	void getShopItem();
 
-	void RequesetCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response, cocos2d::Layer* layer, cocos2d::TMXTiledMap* map);
+	void RequesetCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response);
 
-	void getFlowerImage(cocos2d::Layer* layer, cocos2d::TMXTiledMap* map, std::vector<ShopItem> shopItem);
+	void getFlowerImage(std::vector<ShopItem> shopItem);
 
-	void getFlowerImageCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response,cocos2d::Layer* layer1, cocos2d::TMXTiledMap* map,std::string name);
+	void getFlowerImageCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response, std::string name);
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(Shop);

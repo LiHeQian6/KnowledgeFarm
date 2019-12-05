@@ -1,18 +1,18 @@
 #include "Shop.h"
 #include "SimpleAudioEngine.h"
 #include "AppDelegate.h"
-#include "Learn.h"
+#include <iostream>
+#include <ShopItem.h>
 #include "network/HttpRequest.h"
 #include "network/HttpClient.h"
 #include "network/HttpResponse.h"
 #include "json/rapidjson.h"
 #include "json/document.h"
-#include <iostream>
-#include <ShopItem.h>
 using namespace std;
 
 USING_NS_CC;
-std::vector<ShopItem> shopItem;
+extern std::vector<ShopItem> shopItem1;
+std::vector<ShopItem> shopItem = shopItem1;
 Scene* Shop::createScene() {
 	return Shop::create();
 }
@@ -32,13 +32,13 @@ bool Shop::init() {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 orgin = Director::getInstance()->getVisibleOrigin();
 
+	//getShopItem();
+
 	auto map1 = TMXTiledMap::create("ShopMaptmx.tmx");
 	map1->setScale(visibleSize.width * 0.87 / map1->getContentSize().width);
 	map1->setAnchorPoint(Vec2(0, 0));
 	map1->setPosition(Vec2(orgin.x + visibleSize.width * 0.05, orgin.y + visibleSize.height * 0.05));
 	layer1->addChild(map1, 1);
-
-	getShopItem(layer1, map1);
 
 	auto jiantou = MenuItemImage::create("jiantou.png", "jiantou.png", CC_CALLBACK_1(Shop::menuJiantouCallback, this));
 	jiantou->setAnchorPoint(Vec2(0, 0));
@@ -90,12 +90,12 @@ void Shop::ShowFlower(Layer* layer1,TMXTiledMap* map1, TMXTiledMap* map2, TMXTil
 		count = 1;
 		int i = 0;
 		for (ValueVector::iterator it = ob1.begin(); it != ob1.end(); it++) {
-			if (i < shopItem.size()) {
+			if (i < shopItem1.size()) {
 				Value obj = *it;
 				ValueMap map = obj.asValueMap();
-				CCLOG("%s", shopItem[i].getName().c_str());
-				if (Director::getInstance()->getTextureCache()->getTextureForKey(shopItem[i].getName()) != NULL) {
-					auto flower = Sprite::createWithTexture(Director::getInstance()->getTextureCache()->getTextureForKey(shopItem[i++].getName()));
+				CCLOG("%s", shopItem1[i].getName().c_str());
+				if (!Director::getInstance()->getTextureCache()->getTextureForKey(shopItem1[i].getName()) == NULL) {
+					auto flower = Sprite::createWithTexture(Director::getInstance()->getTextureCache()->getTextureForKey(shopItem1[i++].getName()));
 					flower->setScale(visibleSize.height * 0.15 / flower->getContentSize().height);
 					flower->setAnchorPoint(Vec2(0, 0));
 					flower->setPosition(Vec2(orgin.x + map.at("x").asFloat() * visibleSize.width * 0.3 / flower->getContentSize().width + visibleSize.height / 6, orgin.y + map.at("y").asFloat() * visibleSize.height * 0.15 / flower->getContentSize().height + visibleSize.height * 0.07 + visibleSize.height * 0.25 * (count - 1)));
@@ -127,67 +127,68 @@ void Shop::menuJiantouCallback(Ref* pSender) {
 	Director::sharedDirector()->popScene();
 }
 
-void Shop::getShopItem(Layer* layer1, TMXTiledMap* map) {
-	auto* request = new cocos2d::network::HttpRequest();
-	request->setUrl("http://10.7.87.222:8080/FarmKnowledge/crop/initCrop");
-	request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
-	request->setResponseCallback(CC_CALLBACK_2(Shop::RequesetCallBack, this,layer1,map));
-	cocos2d::network::HttpClient::getInstance()->send(request);
-	request->release();
-}
-
-void Shop::RequesetCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response, Layer* layer1, TMXTiledMap* map) {
-	if (!response->isSucceed()) {
-		return;
-	}
-	std::vector<char>* vec = response->getResponseData();
-	std::string str_json(vec->begin(), vec->end());
-	CCLOG("%s\n", str_json.c_str());
-	rapidjson::Document document;
-	document.Parse<0>(str_json.c_str());
-	if (document.HasParseError()) {
-		CCLOG("GetParseError %s\n", document.GetParseError());
-	}
-	if (document.IsArray()) {
-		auto doc = document.GetArray();
-		for (int i = 0; i < doc.Size(); ++i) {
-			ShopItem item(
-				doc[i]["exist"].GetInt(),
-				doc[i]["img3"].GetString(),
-				doc[i]["matureTime"].GetInt(),
-				doc[i]["price"].GetInt(),
-				doc[i]["name"].GetString(),
-				doc[i]["id"].GetInt(),
-				doc[i]["experience"].GetInt(),
-				doc[i]["value"].GetInt(),
-				doc[i]["img2"].GetString(),
-				doc[i]["img1"].GetString());
-			shopItem.push_back(item);
-		}
-		getFlowerImage(layer1, map, shopItem);
-	}
-}
-
-void Shop::getFlowerImage(Layer* layer1, TMXTiledMap* map, std::vector<ShopItem> shopItem) {
-	auto request = new cocos2d::network::HttpRequest();
-	if (Director::getInstance()->getTextureCache()->getTextureForKey(shopItem[0].getName()) == NULL) {
-		request->setUrl(shopItem[0].getImage1());
-		request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
-		request->setResponseCallback(CC_CALLBACK_2(Shop::getFlowerImageCallBack, this, layer1, map, shopItem[0].getName()));
-		cocos2d::network::HttpClient::getInstance()->send(request);
-	}
-	request->release();
-}
-
-void Shop::getFlowerImageCallBack(cocos2d::network::HttpClient* sender,cocos2d::network::HttpResponse* response,Layer* layer1, TMXTiledMap* map,std::string name) {
-	if (!response->isSucceed())
-		return;
-	vector<char>* buffer = response->getResponseData();
-	CCImage* img = new CCImage;
-	img->initWithImageData((unsigned char*)buffer->data(), buffer->size());
-	CCTexture2D* texture = new CCTexture2D();
-	if (texture->initWithImage(img)) {
-		Director::getInstance()->getTextureCache()->addImage(img, name);
-	}
-	img->release();
-}
+//void Shop::getShopItem() {
+//	auto* request = new cocos2d::network::HttpRequest();
+//	request->setUrl("http://10.7.87.222:8080/FarmKnowledge/crop/initCrop");
+//	request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
+//	request->setResponseCallback(CC_CALLBACK_2(Shop::RequesetCallBack, this));
+//	cocos2d::network::HttpClient::getInstance()->sendImmediate(request);
+//	request->release();
+//}
+//
+//void Shop::RequesetCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response) {
+//	if (!response->isSucceed()) {
+//		return;
+//	}
+//	std::vector<char>* vec = response->getResponseData();
+//	std::string str_json(vec->begin(), vec->end());
+//	CCLOG("%s\n", str_json.c_str());
+//	rapidjson::Document document;
+//	document.Parse<0>(str_json.c_str());
+//	if (document.HasParseError()) {
+//		CCLOG("GetParseError %s\n", document.GetParseError());
+//	}
+//	if (document.IsArray()) {
+//		auto doc = document.GetArray();
+//		for (int i = 0; i < doc.Size(); ++i) {
+//			ShopItem item(
+//				doc[i]["exist"].GetInt(),
+//				doc[i]["img3"].GetString(),
+//				doc[i]["matureTime"].GetInt(),
+//				doc[i]["price"].GetInt(),
+//				doc[i]["name"].GetString(),
+//				doc[i]["id"].GetInt(),
+//				doc[i]["experience"].GetInt(),
+//				doc[i]["value"].GetInt(),
+//				doc[i]["img2"].GetString(),
+//				doc[i]["img1"].GetString());
+//			shopItem.push_back(item);
+//		}
+//		getFlowerImage(shopItem);
+//	}
+//}
+//
+//void Shop::getFlowerImage(std::vector<ShopItem> shopItem) {
+//	auto request = new cocos2d::network::HttpRequest();
+//	for (int i = 0; i < shopItem.size(); ++i) {
+//		request->setUrl(shopItem[0].getImage1());
+//		request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
+//		request->setResponseCallback(CC_CALLBACK_2(Shop::getFlowerImageCallBack, this, shopItem[i].getName()));
+//		cocos2d::network::HttpClient::getInstance()->sendImmediate(request);
+//	}
+//	request->release();
+//}
+//
+//void Shop::getFlowerImageCallBack(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response, std::string name) {
+//	if (!response->isSucceed())
+//		return;
+//	vector<char>* buffer = response->getResponseData();
+//	CCImage* img = new CCImage;
+//	img->initWithImageData((unsigned char*)buffer->data(), buffer->size());
+//	CCTexture2D* texture = new CCTexture2D();
+//	CCLOG("%s", name.c_str());
+//	if (texture->initWithImage(img) && Director::getInstance()->getTextureCache()->addImage(img, name) == NULL) {
+//		Director::getInstance()->getTextureCache()->addImage(img, name);
+//	}
+//	img->release();
+//}

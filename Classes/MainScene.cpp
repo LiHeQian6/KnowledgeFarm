@@ -4,12 +4,15 @@
 #include "Learn.h"
 #include "Shop.h"
 #include "Settings.h"
+#include "network/HttpClient.h"
 USING_NS_CC;
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1900)
 #pragma execution_character_set("utf-8")
 #endif
 using namespace ui;
+using namespace cocos2d::network;
+using namespace std;
 
 
 Scene* Main::createScene()
@@ -49,7 +52,9 @@ bool Main::init()
 	map->setScale(visibleSize.height *0.38/ map->getContentSize().height);
 	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7);
 	addChild(map,1);
-	
+	auto touch = EventListenerTouchOneByOne::create();
+	touch->onTouchBegan = CC_CALLBACK_2(Main::OnTouch,this,map);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, this);
 	auto dog = Sprite::create("dog.png");
 	dog->setScale(visibleSize.height * 1 / 5 / dog->getContentSize().height);
 	dog->setPosition(origin.x+visibleSize.width*0.9, origin.y+visibleSize.height*0.15);
@@ -59,7 +64,89 @@ bool Main::init()
     return true;
 }
 
+//void Main::sendHttpRequest() {
+//	auto request = new HttpRequest();
+//	string str = "你好！";
+//	string info = string_To_UTF8(str);
+//	request->setUrl("http://10.7.87.219:8080/COCOTest/TestServlet?info=123");
+//	request->setRequestType(HttpRequest::Type::GET);
+//	request->setResponseCallback(CC_CALLBACK_2(Main::HttpRequestCallBack, this));
+//	HttpClient::getInstance()->sendImmediate(request);
+//	request->release();
+//}
+
+
+// string Main::string_To_UTF8(const std::string& str)
+//{
+//	int nwLen = ::MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, NULL, 0);
+//	wchar_t* pwBuf = new wchar_t[nwLen + 1];//一定要加1，不然会出现尾巴 
+//	ZeroMemory(pwBuf, nwLen * 2 + 2);
+//	::MultiByteToWideChar(CP_ACP, 0, str.c_str(), str.length(), pwBuf, nwLen);
+//	int nLen = ::WideCharToMultiByte(CP_UTF8, 0, pwBuf, -1, NULL, NULL, NULL, NULL);
+//	char* pBuf = new char[nLen + 1];
+//	ZeroMemory(pBuf, nLen + 1);
+//	::WideCharToMultiByte(CP_UTF8, 0, pwBuf, nwLen, pBuf, nLen, NULL, NULL);
+//	std::string retStr(pBuf);
+//	delete[]pwBuf;
+//	delete[]pBuf;
+//	pwBuf = NULL;
+//	pBuf = NULL;
+//	return retStr;
+//}
+//
+//void Main::HttpRequestCallBack(HttpClient* client, HttpResponse* response) {
+//	if (!response) {
+//		return;
+//	}
+//	auto info = response->getResponseData();
+//	for (unsigned int i = 0; i < info->size(); i++)
+//	{
+//		log("% c", (*info)[i]);
+//	}
+//}
+
+bool Main::OnTouch(Touch* touch, Event* event,TMXTiledMap* map) {
+	//Size visiblesize = Director::sharedDirector()->getVisibleSize();
+	//// 获取点击的openGL坐标
+	//auto touchPos = touch->getLocation();
+	//CCLOG("TOUCH");
+	//TMXLayer* layer1 = map->getLayer("map1");
+	////cocos是默认用opengl 坐标（左下角开始） tmx 用的是格子坐标(左上角开始) 这里做转换(重点)
+	//Size mapSize = map->getMapSize();//获取地图总大小
+	//Size tileSize = map->getTileSize();//获取格子大小
+	//auto size = tileSize.width * visiblesize.height * 0.38 / map->getContentSize().height;
+	//int x = (touchPos.x) / (tileSize.width* visiblesize.height * 0.38 / map->getContentSize().height);//格子坐标x
+	////int y = (mapSize.height * tileSize.height - touchPos.y) / tileSize.height;//格子坐标y
+	//int y = (visiblesize.height - touchPos.y) / tileSize.height * visiblesize.height * 0.38 / map->getContentSize().height;
+	//// 计算当前缩放下，每块瓦片的长宽
+	//layer1->setTileGID(0, Vec2(x, y));//设置为0就置空了
+	//log("%d  %d", x, y);
+	return true;
+}
+
+void Main::ShowFlowerInBag(TMXTiledMap *map,Layer* layer) {
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	auto maplayer = map->getObjectGroup("flower");
+	auto ob1 = maplayer->getObject("flower1");
+	auto flower = Button::create("meigui.png");
+	auto mapScale = visibleSize.height * 0.94 / map->getContentSize().height;
+	auto scale = visibleSize.height * 0.15 / flower->getContentSize().height;
+	flower->setAnchorPoint(Vec2(0, 0));
+	flower->setScale(scale);
+	auto width = visibleSize.width;
+	auto mapc = map->getContentSize().width* mapScale;
+	auto x = origin.x+visibleSize.width - map->getContentSize().width * mapScale * 0.9;
+	auto y = origin.y + map->getContentSize().height * 0.7;
+	flower->setPosition(Vec2(
+		origin.x+ visibleSize.width - map->getContentSize().width*mapScale*0.95, 
+		origin.y+ map->getContentSize().height * mapScale *0.86));
+	layer->addChild(flower, 12);
+}
+
+/*创建背包层*/
 void Main::CreateBagLayer(Size visibleSize, Vec2 origin,Layer * layer) {
+	//sendHttpRequest();
 	auto BagMap = TMXTiledMap::create("bag.tmx");
 	auto Close = Button::create("close.png");
 	auto scale = visibleSize.height*0.94 / BagMap->getContentSize().height;
@@ -73,8 +160,10 @@ void Main::CreateBagLayer(Size visibleSize, Vec2 origin,Layer * layer) {
 	Close->addClickEventListener(CC_CALLBACK_1(Main::onclickCloseCallBack,this, layer));
 	layer->addChild(BagMap, 10);
 	layer->addChild(Close, 11);
+	ShowFlowerInBag(BagMap,layer);
 }
 
+/*创建用户信息层*/
 void Main::createUserInfoLayer(Size visibleSize, Vec2 origin) {
 	auto userInfo = Layer::create();
 	//头像
@@ -130,10 +219,11 @@ void Main::createUserInfoLayer(Size visibleSize, Vec2 origin) {
 	addChild(userInfo);
 }
 
+/*菜单层*/
 void Main::menuLayer(Size visibleSize, Vec2 origin)
 {
 	auto bagLayer = Layer::create();
-	this->addChild(bagLayer, 99);
+	this->addChild(bagLayer, 5);
 
 	auto learn = MenuItemImage::create(
 		"learn.png",
@@ -218,23 +308,30 @@ void Main::menuLayer(Size visibleSize, Vec2 origin)
 	this->addChild(menu, 1);
 }
 
+/*点击背包回调函数*/
 void Main::onclickBagCallback(cocos2d::Ref* pSender,Size visibleSize, Vec2 origin,Layer* layer) {
-	if(layer->getChildrenCount() == 0)
-		CreateBagLayer(visibleSize, origin,layer);
+	if (layer->getChildrenCount() == 0)
+		CreateBagLayer(visibleSize, origin, layer);
+	else
+		layer->removeAllChildren();
 }
 
+/*点击关闭回调函数*/
 void Main::onclickCloseCallBack(Ref* pSender,Layer* layer) {
 	layer->removeAllChildren();
 }
 
+/*进入学习入口页面*/
 void Main::intoLearnPageCallback(Ref* pSender) {
 	Director::getInstance()->pushScene(Learn::createScene());
 }
 
+/*进入商店页面*/
 void Main::intoShopPageCallback(Ref* pSender) {
 	Director::getInstance()->pushScene(Shop::createScene());
 }
 
+/*进入设置页面*/
 void Main::intoSettingsCallback(cocos2d::Ref* pSender) {
 	Director::getInstance()->pushScene(Settings::createScene());
 }

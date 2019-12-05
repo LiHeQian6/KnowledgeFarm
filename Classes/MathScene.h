@@ -3,9 +3,8 @@
 #define __MATH_SCENE_H__
 
 #include "cocos2d.h"
-#include "network/HttpRequest.h"
 #include "network/HttpClient.h"
-#include "network/HttpResponse.h"
+#include "Questions.h"
 USING_NS_CC;
 class MathScene : public cocos2d::Scene
 {
@@ -16,8 +15,8 @@ public:
 	void getQuestions();
 	void onClickJiantouCallBack(cocos2d::Ref* english);
 	// implement the "static create()" method manually
-	void showQuestion(std::string str);
-	void HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos2d::network::HttpResponse* response);
+	void showQuestion(std::vector<Questions> q);
+	void HttpRequestCompleted(network::HttpClient* sender, network::HttpResponse* response);
 	CREATE_FUNC(MathScene);
 };
 

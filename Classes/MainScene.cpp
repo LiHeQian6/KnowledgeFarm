@@ -53,7 +53,7 @@ bool Main::init()
 	map->setAnchorPoint(Vec2(0.45,0.5));
 	map->setScale(visibleSize.height *0.38/ map->getContentSize().height);
 	map->setPosition(origin.x+visibleSize.width*2/5,origin.y+ visibleSize.height*3/7); 
-	//_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, this);
 	auto dog = Sprite::create("dog.png");
 	dog->setScale(visibleSize.height * 1 / 5 / dog->getContentSize().height);
 	dog->setPosition(origin.x+visibleSize.width*0.9, origin.y+visibleSize.height*0.15);
@@ -379,8 +379,6 @@ void Main::intoShopPageCallback(Ref* pSender) {
 void Main::intoSettingsCallback(cocos2d::Ref* pSender) {
 	Director::getInstance()->pushScene(Settings::createScene());
 }
-
-void Main::menuCloseCallback(Ref* pSender)
-{
-
+void Main::menuCloseCallback(cocos2d::Ref* pSender) {
+	
 }

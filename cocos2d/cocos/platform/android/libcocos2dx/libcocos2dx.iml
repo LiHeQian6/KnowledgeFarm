@@ -92,9 +92,9 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: __local_aars__:G.\VS2019WorkSpace\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\android-async-http-1.4.9.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:G.\VS2019WorkSpace\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\com.android.vending.expansion.zipfile.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:G.\VS2019WorkSpace\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\httpclient-4.4.1.1.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:G.\VS2019WorkSpace\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\oppoSDK.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:E.\TeamGit\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\android-async-http-1.4.9.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:E.\TeamGit\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\com.android.vending.expansion.zipfile.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:E.\TeamGit\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\httpclient-4.4.1.1.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:E.\TeamGit\KnowledgeFarm\cocos2d\cocos\platform\android\java\libs\oppoSDK.jar:unspecified@jar" level="project" />
   </component>
 </module>

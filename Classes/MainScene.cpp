@@ -180,6 +180,13 @@ void Main::CreateBagLayer(Size visibleSize, Vec2 origin,Layer * layer) {
 	Close->addClickEventListener(CC_CALLBACK_1(Main::onclickCloseCallBack,this, layer));
 	layer->addChild(BagMap, 10);
 	layer->addChild(Close, 11);
+	layer->setContentSize(BagMap->getContentSize());
+	/*auto touch = EventListenerTouchOneByOne::create();
+	touch->onTouchBegan = [](Touch* t, Event* e) {
+		return true;
+	}; 
+	touch->setSwallowTouches(true);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, layer);*/
 	ShowFlowerInBag(BagMap,layer);
 }
 
@@ -332,8 +339,15 @@ void Main::menuLayer(Size visibleSize, Vec2 origin)
 void Main::onclickBagCallback(cocos2d::Ref* pSender,Size visibleSize, Vec2 origin,Layer* layer) {
 	if (layer->getChildrenCount() == 0)
 		CreateBagLayer(visibleSize, origin, layer);
-	else
+	else {
 		layer->removeAllChildren();
+		/*auto touch = EventListenerTouchOneByOne::create();
+		touch->onTouchBegan = [](Touch* t, Event* e) {
+			return false;
+		};
+		touch->setSwallowTouches(false);
+		_eventDispatcher->addEventListenerWithSceneGraphPriority(touch, layer);*/
+	}
 }
 
 /*点击关闭回调函数*/

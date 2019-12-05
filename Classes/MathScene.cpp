@@ -88,7 +88,8 @@ void MathScene::HttpRequestCompleted(cocos2d::network::HttpClient* sender, cocos
 void MathScene::showQuestion() {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 orgin = Director::getInstance()->getVisibleOrigin();
-	auto text = Label::createWithTTF(q.at(i).getQuestion(), "fonts/font.ttf", 50);
+	auto text = Label::createWithTTF("", "fonts/font.ttf", 50);
+	text->setString(q.at(i).getQuestion());
 	text->setTag(1);
 	auto textField = cocos2d::extension::EditBox::create(Size(200, 35), Scale9Sprite::create("editbox.png"));
 	textField->setTag(2);
@@ -107,17 +108,37 @@ void MathScene::showQuestion() {
 	next->setTitleLabel(Label::createWithTTF("NEXT","fonts/font.ttf", 30));
 	next->setPosition(Vec2(orgin.x + visibleSize.width*2/3, orgin.y + visibleSize.height *2/ 5));
 	next->setTitleFontName("fonts/font.ttf");
+	next->setTag(3);
 	this->addChild(next);
 	next->addClickEventListener(CC_CALLBACK_0(MathScene::nextQuestion,this));
 }
 void MathScene::nextQuestion() {
-
 	Label* text=(Label*)getChildByTag(1);
-	if (i != q.size())
+	EditBox* rs = (EditBox*)getChildByTag(2);
+	int r=String::createWithFormat("%s", rs->getText())->intValue(); 
+	if (q.at(i).getAnswer() != r) {
+		rs->setFontColor(Color3B::RED);
+		Sleep(2000);
+		rs->setText("");
+		rs->setFontColor(Color3B::WHITE);
+	}
+	else {
+		rs->setFontColor(Color3B::GREEN);
+		Sleep(2000);
+		rs->setText("");
+		rs->setFontColor(Color3B::WHITE);
+	}
+	if (i != q.size() - 1) {
 		i++;
-	else
+		text->setString(q.at(i).getQuestion());
+	}
+	else {
+		i = 0;
+		removeChildByTag(1);
+		removeChildByTag(3);
 		getQuestions();
-	text->setString(q.at(i).getQuestion());
+	}
+	
 }
 std::string Questions::getQuestion() {
 	std::string str = std::to_string(num1) + signal1 + std::to_string(num2);
